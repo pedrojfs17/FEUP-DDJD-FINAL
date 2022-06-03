@@ -1,0 +1,681 @@
+{
+    "name": "GameControlls",
+    "maps": [
+        {
+            "name": "Player1",
+            "id": "7e14347c-7bd8-4913-bc5f-de034a313ed9",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "8caa6343-5701-4bd7-956d-3ff9eb3b4706",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Blue",
+                    "type": "Button",
+                    "id": "b95ae793-ced6-4fbb-8953-705cc83cd506",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Orange",
+                    "type": "Button",
+                    "id": "5f5b203e-74c0-4658-bccf-0a6711318716",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Green",
+                    "type": "Button",
+                    "id": "410c37a9-7987-4a00-9e0f-56868fc8197f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Yellow",
+                    "type": "Button",
+                    "id": "a3aaeefe-612b-4a84-afed-0d422d918e66",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "17d0f656-83c6-4cfd-8f34-148e4202c225",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03a58739-f667-48e2-a8bc-779a8a5e9202",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03ebf975-8eea-4375-bbc9-1e95b4fefc12",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c75ed352-66f4-47e7-9581-0222d248a1e7",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3de2d48-f355-4a3d-a8b7-c46d40f99429",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87731fa7-f7cc-401b-b5e2-937ca957e625",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7394ee82-269d-4b82-9101-d79927e2caee",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41d5e97c-b0e1-48d4-bcd2-2b3bff0548f5",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d49bbd46-b3a8-4f07-9691-6ad9c0b941dc",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60945687-013b-4b70-ae77-faf2f0fed36f",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player2",
+            "id": "bacf5935-06e6-4f5c-bb92-4b384e341d4b",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "2c1642ff-dd5a-4cf2-9b87-9599b0c1a03a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Blue",
+                    "type": "Button",
+                    "id": "efec8055-4351-4132-a5fb-24eed05d1cfb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Orange",
+                    "type": "Button",
+                    "id": "d07a3936-26ee-46f2-ba24-5699f9bd2fb3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Green",
+                    "type": "Button",
+                    "id": "9d52e2c5-5ffa-4def-b373-ae8c1a48721b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Yellow",
+                    "type": "Button",
+                    "id": "303b4548-3607-4425-8cf5-45a7ae38bef0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b20b5cd6-977d-439f-be7d-d35bdebd22a4",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0b74991-3ee7-47da-af82-854627c7adea",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fb6d488-7272-4c5b-b5b3-502ba8e1db63",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f44d415-5a34-4013-817b-2b13138951fc",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d57837f7-c16d-404a-80c6-193d0626a166",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8aa25ea3-95ed-47b8-a21c-d7c836c8f0ea",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a8a4d1d-a45c-48d4-98f1-612944b6b966",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3c6abb0-5b22-4958-a0e2-3c78d18f15b4",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8830dccf-3e79-472b-9744-13c459a96916",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6df35ecf-8d36-4095-b9fb-e8ca0606788d",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player3",
+            "id": "ef5dc0d8-61f5-42de-87f3-40d90b6a36e4",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "f52bb513-1214-4dd6-8528-05356c8ff422",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Blue",
+                    "type": "Button",
+                    "id": "639788c8-3c47-40a6-bda2-7a5125b5ac79",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Orange",
+                    "type": "Button",
+                    "id": "bbb557ec-8a9b-4ec3-ab64-cff47bb706d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Green",
+                    "type": "Button",
+                    "id": "52a719f8-4e54-4732-97e9-34596f78ee66",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Yellow",
+                    "type": "Button",
+                    "id": "f98cebe5-7289-4f5f-b08e-45479a01cd1d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "15347023-cc6e-476c-9bd9-31d670409c59",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button15",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8cf6463d-2d7c-4d9c-89d2-5df35abd7d5d",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button14",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bbb866a-7ea3-4e84-a617-58cc0b5c170a",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button13",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb44edf2-3b73-4937-b76f-0a75649cd834",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button12",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08860dd8-68cd-49f5-9629-5a13827ad909",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50bf8c7f-f884-4656-8a62-729cd781397c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3934ec30-d2c0-4fb2-9198-70883869cc86",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90c28fde-7fd5-4b9b-9e61-fd9d3b440d07",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7852ae57-bee6-4d38-9985-0308173a8327",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc77cea1-4103-4770-82f7-1cf3ec390bcc",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player4",
+            "id": "da37a3cf-29fb-4d27-b724-19f55ce7265e",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "7ff4f085-befe-40d6-baef-3032fd87d387",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Blue",
+                    "type": "Button",
+                    "id": "bb129d0c-e5a4-4721-bbdd-d1aad598af4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Orange",
+                    "type": "Button",
+                    "id": "d1342647-5fa5-4612-ad9c-7aa3d41c0c4b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Green",
+                    "type": "Button",
+                    "id": "a6f256db-04fa-49c8-aeb7-cbad3b9a04b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Yellow",
+                    "type": "Button",
+                    "id": "af773f4c-500f-48c8-a7b2-39df056a7880",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fec8abe3-97b0-405c-8f55-f0a441833e9f",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button20",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ef6d312-5e33-44cf-8ee1-92c131e4611e",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button19",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc1344d7-2b29-4073-8992-2184453130d8",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button18",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a31011f6-5f33-41e9-be73-a1c2d1935eed",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button17",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "61e22d7c-d456-49cd-a8fb-44d690321a79",
+                    "path": "<HID::Logitech Logitech Buzz(tm) Controller V1>/button16",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Buzz",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44968671-be6c-4565-9f0f-9dfa96e31181",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c1384ae-57de-451a-b774-bf5eee48e858",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Blue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00255849-958a-4fd7-9eb9-27a9cca36e3f",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Orange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e12273dc-8eb6-4ed0-b9ff-3f25a58c4535",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Yellow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dce55ee-65f9-4b4a-acb9-a6ebbf2374e8",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Green",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Buzz",
+            "bindingGroup": "Buzz",
+            "devices": [
+                {
+                    "devicePath": "<HID::Logitech Logitech Buzz(tm) Controller V1>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
