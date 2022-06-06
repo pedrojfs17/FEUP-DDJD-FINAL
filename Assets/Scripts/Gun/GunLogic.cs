@@ -58,48 +58,6 @@ public class GunLogic : GameLogic
     void Update()
     {
 
-        // if(currentState == GunMiniGameState.WaitingForNextRound)
-        // {
-        //     if(Input.GetKeyDown(KeyCode.N))
-        //     {
-
-        //         updateRound(currentRound);
-        //         return;
-        //     }
-        // }
-
-        // if(currentState == GunMiniGameState.WaitingforPlayerToFire) 
-        // {
-        //     if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.L))
-        //     {
-        //         int winner = 0;
-
-        //         if(Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.L))
-        //         {
-
-        //             SetGUIText(waitGoGUI, "It was a tie!\nPress N to repeat");
-        //             currentState = GunMiniGameState.WaitingForNextRound;
-        //             return;
-
-        //         }
-        //         else if(Input.GetKeyDown(KeyCode.A))
-        //         {
-        //             winner = playerLeft;
-
-        //         }
-        //         else if(Input.GetKeyDown(KeyCode.L))
-        //         {   
-        //             winner = playerRight;
-        //         }
-
-        //         SetGUIText(waitGoGUI, "Player " + winner + " Won\nPress N to continue");
-        //         SetScore(winner);
-        //         currentRound++;
-        //         currentState = GunMiniGameState.WaitingForNextRound;
-
-        //     }
-        // }
-
     }
 
     private void updateMiniGame(int winner) {
@@ -110,7 +68,11 @@ public class GunLogic : GameLogic
 
         if(currentState == GunMiniGameState.WaitingforPlayerToFire) 
         {
-            SetGUIText(waitGoGUI, "Player " + winner + " Won\nPress N to continue");
+            if (winner != playerLeft && winner != playerRight)
+            {
+                return;
+            }
+            SetGUIText(waitGoGUI, "Player " + winner + " Won\nPress the action button to continue");
             SetScore(winner);
             currentRound++;
             currentState = GunMiniGameState.WaitingForNextRound;            
@@ -237,7 +199,14 @@ public class GunLogic : GameLogic
     private void FinishGame()
     {
         currentState = GunMiniGameState.Finished;
-        SetGUIText(waitGoGUI, "Player " + winners[3] + " won!");        
+        SetGUIText(waitGoGUI, "Player " + winners[3] + " won!");
+        List<int> finalScore = new List<int>();
+        finalScore.Add(winners[3]);
+        finalScore.Add(losers[3]);
+        finalScore.Add(winners[2]);
+        finalScore.Add(losers[2]);
+
+        GameStatus.instance.finishMiniGame(finalScore);   
     }
 
     private void SetGUIText(GameObject guiObj, string text)
