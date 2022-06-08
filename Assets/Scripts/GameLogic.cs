@@ -14,4 +14,6 @@ public abstract class GameLogic : MonoBehaviour
     public virtual void playerGreen(GameObject player) {}
 
     public virtual void playerYellow(GameObject player) {}
+    
+    public virtual void playerActionCanceled(GameObject player) {}
 }

@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class RowingGameLogic : MonoBehaviour
+public class RowingLogic : GameLogic
 {
     GameControlls gameControlls;
     BoatMovement leftBoatMovement, rightBoatMovement;
@@ -16,8 +17,11 @@ public class RowingGameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!GameStatus.instance.playing) {
+            GameStatus.instance.startMiniGame(4, SceneManager.GetActiveScene().name, false);
+        }
+        
         placeObstacles();
-        setupControlls();
         setupMovement();
         assignPlayers();
     }
@@ -25,36 +29,17 @@ public class RowingGameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameControlls.Player1.Action.IsPressed()) {
-            actions[correspondence[0]][0]();
-        } else {
-            actions[correspondence[0]][1]();
-        }
-        if (gameControlls.Player2.Action.IsPressed()) {
-            actions[correspondence[1]][0]();
-        } else {
-            actions[correspondence[1]][1]();
-        }
-        if (gameControlls.Player3.Action.IsPressed()) {
-            actions[correspondence[2]][0]();
-        } else {
-            actions[correspondence[2]][1]();
-        }
-        if (gameControlls.Player4.Action.IsPressed()) {
-            actions[correspondence[3]][0]();
-        } else {
-            actions[correspondence[3]][1]();
-        }
         
     }
     
-    private void setupControlls() {
-        gameControlls = new GameControlls();
-        
-        gameControlls.Player1.Enable();
-        gameControlls.Player2.Enable();
-        gameControlls.Player3.Enable();
-        gameControlls.Player4.Enable();
+    public override void playerAction(GameObject player) {
+        int index = player.GetComponent<InputController>().playerNumber - 1;
+        actions[correspondence[index]][0]();
+    }
+    
+    public override void playerActionCanceled(GameObject player) {
+        int index = player.GetComponent<InputController>().playerNumber - 1;
+        actions[correspondence[index]][1]();
     }
     
     private void setupMovement() {
@@ -97,5 +82,25 @@ public class RowingGameLogic : MonoBehaviour
             GameObject newObstacle = Instantiate(obstacle) as GameObject;
             newObstacle.transform.position = new Vector3(UnityEngine.Random.Range(-7, 7), 0, z);
         }
+    }
+    
+    public void finish(string winner) {
+        List<int> gameScores = new List<int>();
+        for (int i = 0; i <= 3; i++) {
+            if (correspondence[i] <= 1) {
+                if (winner == "LeftBoat") {
+                    gameScores.Add(100);
+                } else {
+                    gameScores.Add(0);
+                }
+            } else {
+                if (winner == "RightBoat") {
+                    gameScores.Add(100);
+                } else {
+                    gameScores.Add(0);
+                }
+            }
+        }
+        GameStatus.instance.finishMiniGame(gameScores);
     }
 }

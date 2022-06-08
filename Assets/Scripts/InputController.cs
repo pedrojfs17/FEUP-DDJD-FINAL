@@ -37,6 +37,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player1.Orange.performed += onOrange;
                 gameControlls.Player1.Green.performed += onGreen;
                 gameControlls.Player1.Yellow.performed += onYellow;
+                gameControlls.Player1.Action.canceled += onActionCanceled;
                 break;
             case 2:
                 gameControlls.Player2.Enable();
@@ -45,6 +46,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player2.Orange.performed += onOrange;
                 gameControlls.Player2.Green.performed += onGreen;
                 gameControlls.Player2.Yellow.performed += onYellow;
+                gameControlls.Player2.Action.canceled += onActionCanceled;
                 break;
             case 3:
                 gameControlls.Player3.Enable();
@@ -53,6 +55,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player3.Orange.performed += onOrange;
                 gameControlls.Player3.Green.performed += onGreen;
                 gameControlls.Player3.Yellow.performed += onYellow;
+                gameControlls.Player3.Action.canceled += onActionCanceled;
                 break;
             case 4:
                 gameControlls.Player4.Enable();
@@ -61,6 +64,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player4.Orange.performed += onOrange;
                 gameControlls.Player4.Green.performed += onGreen;
                 gameControlls.Player4.Yellow.performed += onYellow;
+                gameControlls.Player4.Action.canceled += onActionCanceled;
                 break;
             default:
                 break;
@@ -91,6 +95,11 @@ public class InputController : MonoBehaviour
     {
         logic.playerYellow(this.gameObject);
     }
+    
+    public void onActionCanceled(InputAction.CallbackContext context)
+    {
+        logic.playerActionCanceled(this.gameObject);
+    }
 
     void OnDestroy() {
         switch (playerNumber) {
@@ -101,6 +110,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player1.Orange.performed -= onOrange;
                 gameControlls.Player1.Green.performed -= onGreen;
                 gameControlls.Player1.Yellow.performed -= onYellow;
+                gameControlls.Player1.Action.canceled -= onActionCanceled;
                 break;
             case 2:
                 gameControlls.Player2.Disable();
@@ -109,6 +119,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player2.Orange.performed -= onOrange;
                 gameControlls.Player2.Green.performed -= onGreen;
                 gameControlls.Player2.Yellow.performed -= onYellow;
+                gameControlls.Player2.Action.canceled -= onActionCanceled;
                 break;
             case 3:
                 gameControlls.Player3.Disable();
@@ -117,6 +128,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player3.Orange.performed -= onOrange;
                 gameControlls.Player3.Green.performed -= onGreen;
                 gameControlls.Player3.Yellow.performed -= onYellow;
+                gameControlls.Player3.Action.canceled -= onActionCanceled;
                 break;
             case 4:
                 gameControlls.Player4.Disable();
@@ -125,6 +137,7 @@ public class InputController : MonoBehaviour
                 gameControlls.Player4.Orange.performed -= onOrange;
                 gameControlls.Player4.Green.performed -= onGreen;
                 gameControlls.Player4.Yellow.performed -= onYellow;
+                gameControlls.Player4.Action.canceled -= onActionCanceled;
                 break;
             default:
                 break;
