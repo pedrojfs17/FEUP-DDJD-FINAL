@@ -70,6 +70,7 @@ public class InputController : MonoBehaviour
     public void onAction(InputAction.CallbackContext context) 
     {
         logic.playerAction(this.gameObject);
+        Debug.Log(this.gameObject);
     }
 
     public void onBlue(InputAction.CallbackContext context) 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class GameLogic : MonoBehaviour
 {   
+
     public virtual void playerAction(GameObject player) {}
 
     public virtual void playerBlue(GameObject player) {}
