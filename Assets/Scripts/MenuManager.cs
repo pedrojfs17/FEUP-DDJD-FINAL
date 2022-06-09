@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
 
     public void startFullGame()
     {
-        GameStatus.instance.startFullGame(4, 2);
+        GameStatus.instance.startFullGame(4, 3);
     }
 
     public void startMiniGame(string game)

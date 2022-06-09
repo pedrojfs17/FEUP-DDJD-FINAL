@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/Rythm.unity
     guid: 099aea46444bc1048882c4753a76ccf0
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/Rowing.unity
+    guid: 285a3c54e2568f54abe4e58675dbbcff
   m_configObjects: {}
