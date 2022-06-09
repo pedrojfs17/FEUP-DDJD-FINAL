@@ -27,7 +27,6 @@ public class DodjeLogic : GameLogic
     public override void playerAction(GameObject player){
         if(GetPlayer(player) == 2){
             GameObject.Find("Player2").GetComponent<Gun>().Shoot();
-            Debug.Log("oioioioi");
         }
         else if(GetPlayer(player) == 3){
             GameObject.Find("Player3").GetComponent<Gun>().Shoot();
@@ -40,7 +39,6 @@ public class DodjeLogic : GameLogic
     public override void playerBlue(GameObject player) {
         if(GetPlayer(player) == 1){
             GameObject.Find("Player1").GetComponent<PlayerController>().GoLeft();
-            Debug.Log("oioioioi");
         }
     }
 

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public float forwardForce = 2000f;
     public float sidewaysForce = 20;
-    public float health = 50f;
+    public float health = 100f;
     public float dir = 1;
     public string right;
     public string left;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //rb.AddForce(0,0, forwardForce * Time.deltaTime); 
-        rb.AddForce(0,0,dir * 1200 * Time.deltaTime);
+        rb.AddForce(0,0,dir * 1000 * Time.deltaTime);
 
     }
 

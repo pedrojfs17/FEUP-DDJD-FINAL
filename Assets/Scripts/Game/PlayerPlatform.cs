@@ -24,7 +24,7 @@ public class PlayerPlatform : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKey("d")){
+        /*if(Input.GetKey("d")){
             rb.AddForce(0,0,sidewaysForce * 100 * Time.deltaTime);
         }
         else if(Input.GetKey("a")){
@@ -35,11 +35,25 @@ public class PlayerPlatform : MonoBehaviour
         }
         else if(Input.GetKey("s")){
             rb.AddForce(sidewaysForce * 100 * Time.deltaTime,0,0);
-        }
-        else{
-            rb.velocity = Vector3.zero;
-        }
+        }*/
         
+    }
+
+    public void IsStopped(){
+        rb.velocity = Vector3.zero;
+    }
+
+    public void GoLeft(){
+        rb.AddForce(0,0,-sidewaysForce * 750 * Time.deltaTime);
+    }
+    public void GoRight(){
+        rb.AddForce(0,0,sidewaysForce * 750 * Time.deltaTime);
+    }
+    public void GoUp(){
+        rb.AddForce(-sidewaysForce * 750 * Time.deltaTime,0,0);
+    }
+    public void GoDown(){
+        rb.AddForce(sidewaysForce * 750 * Time.deltaTime,0,0);
     }
 
    
