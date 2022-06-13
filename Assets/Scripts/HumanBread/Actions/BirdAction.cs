@@ -7,16 +7,14 @@ public class BirdAction : MonoBehaviour
     public bool HasBreadAttached = false;
     private Rigidbody birdRb;
     private BirdMovement birdMovement;
-    private HumanMovement humanMovement;
+    public HumanMovement humanMovement;
     public InputAction PlayerControl;
 
     // Start is called before the first frame update
     void Start()
     {
-        Bread = GameObject.FindWithTag("Bread");
         birdRb = GetComponent<Rigidbody>();
         birdMovement = GetComponent<BirdMovement>();
-        humanMovement = GameObject.FindWithTag("Human").GetComponent<HumanMovement>();
     }
 
     // Update is called once per frame
@@ -52,7 +50,9 @@ public class BirdAction : MonoBehaviour
     {
         // TODO: eating animation?
         // TODO: human pissed animation?
-        humanMovement.BreadIsMissing = false;
+        humanMovement.getBreadBack = false;
+        // GameSettings.setClassification(this.gameObject);
+        // print(GameSettings.Classification.Count);
     }
 
     private void OnEnable()

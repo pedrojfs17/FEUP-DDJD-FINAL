@@ -140,23 +140,7 @@ MonoBehaviour:
     m_Id: ded498e2-540d-4b95-92d8-7362066c619e
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 1D Axis
-      m_Id: f8b10b9a-33e0-420b-ab7b-7f52eb0de4a8
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Control
-      m_Flags: 4
-    - m_Name: positive
-      m_Id: 1d2cfae1-cd27-4086-be0a-dce78cb9144d
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Control
-      m_Flags: 8
+    m_SingletonActionBindings: []
     m_Flags: 0
 --- !u!114 &7165456355597396664
 MonoBehaviour:

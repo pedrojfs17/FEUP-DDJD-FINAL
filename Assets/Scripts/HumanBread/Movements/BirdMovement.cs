@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class BirdMovement : MonoBehaviour
 {
+    private const float FINISH_LINE = -4.4f;
     public float Velocity = 2;
     public Vector3 Direction;
     public Rigidbody BirdRb;
@@ -19,7 +20,7 @@ public class BirdMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z <= -4.4f && birdAction.HasBreadAttached)
+        if (transform.position.z <= FINISH_LINE && birdAction.HasBreadAttached) // Game is Finished for the Player
         {
             birdAction.Eat();
             Direction = Vector3.zero;

@@ -1,15 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameSettings : MonoBehaviour
 {
-    public static int Players = 1;
-    public int[] Classification;
-
-    void Start()
-    {
-
-    }
-
+    public static int Players = 4;
+    public static List<GameObject> Classification = new List<GameObject>();
+    
     public static float[] getPositions()
     {
         switch (Players)
@@ -23,5 +19,10 @@ public class GameSettings : MonoBehaviour
             default:
                 return new float[] { 0 };
         }
+    }
+
+    public static void setClassification(GameObject bird)
+    {
+        Classification.Add(bird);
     }
 }

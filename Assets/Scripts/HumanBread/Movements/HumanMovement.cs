@@ -8,10 +8,10 @@ public class HumanMovement : MonoBehaviour
     private int timeOut = 0;
     private Rigidbody humanRb;
     private bool isDistracted = true;
-    public bool BreadIsMissing = false;
-    private BirdMovement birdMovement;
-    private BirdAction birdAction;
-    private HumanAction humanAction;
+    public bool getBreadBack = false;
+    public BirdMovement birdMovement;
+    public BirdAction birdAction;
+    public HumanAction humanAction;
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +19,12 @@ public class HumanMovement : MonoBehaviour
         startRotation = transform.rotation;
         startPosition = transform.position;
         humanRb = GetComponent<Rigidbody>();
-        birdMovement = GameObject.FindWithTag("Player").GetComponent<BirdMovement>();
-        birdAction = GameObject.FindWithTag("Player").GetComponent<BirdAction>();
-        humanAction = GameObject.FindWithTag("Human").GetComponent<HumanAction>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (BreadIsMissing)
+        if (getBreadBack)
             RetrieveBread();
         else
         {
@@ -48,7 +45,7 @@ public class HumanMovement : MonoBehaviour
             if (birdAction.HasBreadAttached) // if bird has taken the bread
             {
                 birdMovement.Velocity = 0;
-                BreadIsMissing = true; // the human will walk towards the bird.
+                getBreadBack = true; // the human will walk towards the bird.
             }
             else
             {
@@ -57,7 +54,7 @@ public class HumanMovement : MonoBehaviour
         }
         else
         {
-            if (BreadIsMissing)
+            if (getBreadBack)
             {
                 // TODO: human confused animation?
             }
@@ -75,7 +72,7 @@ public class HumanMovement : MonoBehaviour
             transform.position = startPosition;
             Turn();
             humanAction.Release();
-            BreadIsMissing = false;
+            getBreadBack = false;
         }
         else
         {

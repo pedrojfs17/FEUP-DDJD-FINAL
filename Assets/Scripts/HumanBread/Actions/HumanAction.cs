@@ -9,7 +9,6 @@ public class HumanAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Bread = GameObject.FindWithTag("Bread");
         humanRb = GetComponent<Rigidbody>();
     }
 
@@ -40,9 +39,8 @@ public class HumanAction : MonoBehaviour
         // TODO: make grabbing animation
         HasBreadAttached = false;
 
-        // TODO: optimize bread's position
         Bread.transform.position = new Vector3( // the bread will return to original position
-        0,
+        transform.position.x,
         0.1f,
         transform.position.z - 0.5f);
     }

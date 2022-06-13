@@ -4,10 +4,9 @@ using UnityEngine;
 public class BreadGenerator : MonoBehaviour
 {
     public GameObject Bread;
-    private List<GameObject> Breads = new List<GameObject>();
+    public static List<GameObject> Breads = new List<GameObject>();
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         var positions = GameSettings.getPositions();
         foreach (var pos in positions)
