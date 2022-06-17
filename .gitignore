@@ -74,5 +74,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/[Aa]ssets/TextMesh Pro
-/[Aa]ssets/TextMesh Pro.meta
+/[Aa]ssets/ThirdParty/
+/[Aa]ssets/ThirdParty.meta
+
+/[Aa]ssets/Extras/
+/[Aa]ssets/Extras.meta

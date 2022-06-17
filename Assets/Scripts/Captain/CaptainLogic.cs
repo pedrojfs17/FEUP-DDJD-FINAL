@@ -1,15 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 using TMPro;
 
 public class CaptainLogic : GameLogic
 {
-    private bool playing = false;
+    public bool playing = false;
+    private bool moving = false;
 
     [SerializeField] private Transform gameCamera;
+
+    [SerializeField] private ParticleSystem hitFx;
 
     private List<GameObject> players;
     private int currentPlayer;
@@ -36,7 +39,7 @@ public class CaptainLogic : GameLogic
         UpdateCamera();
         ResetTimer();
 
-        gameTimer = TimeSpan.FromSeconds(10);
+        gameTimer = TimeSpan.FromSeconds(120);
         playing = true;
     }
 
@@ -83,14 +86,25 @@ public class CaptainLogic : GameLogic
         currentScore = 0;
         roundScores[currentPlayer].text = currentScore.ToString();
 
+        moving = true;
+        players[currentPlayer].GetComponent<PlayerMovement>().startMovement(() => FinishMovement());
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = false;
         currentPlayer = (currentPlayer + 1) % numPlayers;
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = true;
     }
 
+    void FinishMovement() {
+        moving = false;
+    }
+
     void ResetTimer()
     {
-        Timer = UnityEngine.Random.Range(10, 20);
+        Timer = UnityEngine.Random.Range(5f, 10f);
+    }
+
+    public Vector3 GetFirstPlayerPosition()
+    {
+        return players[currentPlayer].transform.position;
     }
 
     void Update()
@@ -109,6 +123,8 @@ public class CaptainLogic : GameLogic
         }
 
         if (Timer <= 0) {
+            hitFx.transform.position = players[currentPlayer].transform.position;
+            hitFx.Play();
             UpdatePlayer();
             UpdateCamera();
             ResetTimer();
@@ -120,7 +136,7 @@ public class CaptainLogic : GameLogic
     
     public override void playerAction(GameObject player)
     {
-        if (players[currentPlayer] == player) {
+        if (!moving && players[currentPlayer] == player) {
             scores[currentPlayer] += (int) currentScore;
             playerScores[currentPlayer].text = (scores[currentPlayer]).ToString();
             UpdatePlayer();
