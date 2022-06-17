@@ -50,6 +50,10 @@ public class GunLogic : GameLogic
         if (!GameStatus.instance.playing) {
             GameStatus.instance.startMiniGame(4, SceneManager.GetActiveScene().name, false);
         }
+
+        // Wait for animation to finish
+        StartCoroutine(waitForAnimation());
+
         updateRound(1);
 
     }
@@ -90,10 +94,6 @@ public class GunLogic : GameLogic
 
 
         currentState = GunMiniGameState.Preparing;
-        
-
-
-        Debug.Log("Round " + round);
 
         PrepareRound(round);
         
@@ -226,5 +226,10 @@ public class GunLogic : GameLogic
 
         updateMiniGame(playerNumber);
             
+    }
+    
+    IEnumerator waitForAnimation()
+    {
+        yield return new WaitForSeconds(1f);
     }
 }
