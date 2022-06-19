@@ -7,7 +7,7 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Animator transition;
 
-    [SerializeField] private float transitionTime = 1f;
+    [SerializeField] private float transitionTime;
 
     public void LoadScene(string sceneName)
     {
