@@ -20,7 +20,7 @@ public class RythmLogic : GameLogic
     void Start()
     {
         if (!GameStatus.instance.playing) {
-            GameStatus.instance.startMiniGame(2, SceneManager.GetActiveScene().name, false);
+            GameStatus.instance.startMiniGame(4, SceneManager.GetActiveScene().name, false);
         }
 
         numPlayers = GameStatus.instance.playerCount;
