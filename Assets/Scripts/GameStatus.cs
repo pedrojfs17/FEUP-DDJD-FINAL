@@ -67,10 +67,12 @@ public class GameStatus : MonoBehaviour
 
     private void loadNextMiniGame()
     {
+        LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
+
         if (gamesToPlay.Count > 0)
-            SceneManager.LoadScene(gamesToPlay.Dequeue());
+            levelLoader.LoadScene(gamesToPlay.Dequeue());
         else
-            SceneManager.LoadScene("Menu");
+            levelLoader.LoadScene("Menu");
     }
 
     private void initializePlayers(int nPlayers)

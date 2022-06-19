@@ -5,17 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Animator transition;
+    [SerializeField] private Animator transition;
 
-    public float transitionTime = 1f;
-
-    float waitTime = 10f;
-
-    private void Update() {
-        waitTime -= Time.deltaTime;
-
-        if (waitTime <= 0) LoadScene("Menu");
-    }
+    [SerializeField] private float transitionTime = 1f;
 
     public void LoadScene(string sceneName)
     {
