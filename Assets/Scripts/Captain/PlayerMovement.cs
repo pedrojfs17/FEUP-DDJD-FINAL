@@ -9,23 +9,15 @@ public class PlayerMovement : MonoBehaviour
     
     public bool inFront = false;
 
-    private bool moving = false;
-
-    private Action movementCallback;
-
     float speed = 10.0f;
 
-    const float EPSILON = 2f;
-
-    public void startMovement(Action callback) {
-        moving = true;
-        movementCallback = callback;
-    }
+    const float EPSILON = 2.4f;
 
     // Update is called once per frame
     void Update()
     {
         if (inFront) {
+            transform.LookAt(transform.position + new Vector3(10, 0, 0));
             transform.Translate(0.0f, 0.0f, speed * Time.deltaTime);
             return;
         } 
@@ -38,9 +30,6 @@ public class PlayerMovement : MonoBehaviour
 
         if ((transform.position - playerInFront.position).magnitude > EPSILON) {
             transform.Translate(0.0f, 0.0f, speed * Time.deltaTime);
-        } else if (moving) {
-            moving = false;
-            movementCallback.Invoke();
         }
     }
 }

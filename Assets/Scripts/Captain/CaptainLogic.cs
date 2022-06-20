@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,7 @@ public class CaptainLogic : GameLogic
     public TextMeshProUGUI timerText;
 
     private float Timer = 0;
+    private float turnDelay;
 
     void Start()
     {
@@ -35,6 +37,7 @@ public class CaptainLogic : GameLogic
         }
 
         numPlayers = GameStatus.instance.playerCount;
+        turnDelay = 0.4f + numPlayers * 0.1f;
         InitializePlayers();
         UpdateCamera();
         ResetTimer();
@@ -87,10 +90,17 @@ public class CaptainLogic : GameLogic
         roundScores[currentPlayer].text = currentScore.ToString();
 
         moving = true;
-        players[currentPlayer].GetComponent<PlayerMovement>().startMovement(() => FinishMovement());
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = false;
         currentPlayer = (currentPlayer + 1) % numPlayers;
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = true;
+
+        StartCoroutine(endMovement());
+    }
+
+    IEnumerator endMovement()
+    {
+        yield return new WaitForSeconds(turnDelay);
+        moving = false;
     }
 
     void FinishMovement() {
@@ -123,7 +133,7 @@ public class CaptainLogic : GameLogic
         }
 
         if (Timer <= 0) {
-            hitFx.transform.position = players[currentPlayer].transform.position;
+            hitFx.transform.position = players[currentPlayer].transform.position + new Vector3(0.75f, 1.25f, 0);
             hitFx.Play();
             UpdatePlayer();
             UpdateCamera();
