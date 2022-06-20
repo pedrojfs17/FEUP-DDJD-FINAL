@@ -26,7 +26,7 @@ public class RythmLogic : GameLogic
         numPlayers = GameStatus.instance.playerCount;
         InitializePlayers();
 
-        gameTimer = TimeSpan.FromSeconds(10);
+        gameTimer = TimeSpan.FromSeconds(90);
         playing = true;
     }
 
