@@ -14,7 +14,7 @@ public class GameStatus : MonoBehaviour
     private List<string> miniGames;
     private Queue<string> gamesToPlay;
 
-    private List<int> playerScores;
+    public List<int> playerScores { get; private set; }
     public List<int> playerPositions { get; private set; }
 
     // Instance
