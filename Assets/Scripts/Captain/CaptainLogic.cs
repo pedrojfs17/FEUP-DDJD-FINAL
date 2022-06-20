@@ -42,7 +42,7 @@ public class CaptainLogic : GameLogic
         UpdateCamera();
         ResetTimer();
 
-        gameTimer = TimeSpan.FromSeconds(120);
+        gameTimer = TimeSpan.FromSeconds(20);
         playing = true;
     }
 

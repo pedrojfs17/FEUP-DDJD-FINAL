@@ -15,6 +15,7 @@ public class GameStatus : MonoBehaviour
     private Queue<string> gamesToPlay;
 
     private List<int> playerScores;
+    public List<int> playerPositions { get; private set; }
 
     // Instance
     public static GameStatus instance;
@@ -65,14 +66,19 @@ public class GameStatus : MonoBehaviour
         }
     }
 
-    private void loadNextMiniGame()
+    private void loadNextMiniGame(bool loadCutscene = false)
     {
         LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
 
-        if (gamesToPlay.Count > 0)
-            levelLoader.LoadScene(gamesToPlay.Dequeue());
-        else
-            levelLoader.LoadScene("Menu");
+        if (loadCutscene)
+            levelLoader.LoadScene("Cutscene");
+        else {
+            if (gamesToPlay.Count > 0)
+                levelLoader.LoadScene(gamesToPlay.Dequeue());
+            else
+                levelLoader.LoadScene("Menu");
+        }
+
     }
 
     private void initializePlayers(int nPlayers)
@@ -109,23 +115,45 @@ public class GameStatus : MonoBehaviour
         loadNextMiniGame();
     }
 
-    private List<int> pointsFromScore(List<int> playerScores)
+    private List<int> pointsFromPositions(List<int> playerPositions)
     {
         List<int> points = new List<int>(new int[playerCount]);
 
-        List<int> distinctScores = playerScores.Distinct().ToList();
-        distinctScores.Sort();
+        List<int> POSITION_POINTS = new List<int> { 5, 3, 1, 0 };
 
         for (int i = 0; i < playerCount; i++) {
-            points[i] = distinctScores.IndexOf(playerScores[i]);
+            points[i] = POSITION_POINTS[playerPositions[i] - 1];
         }
 
         return points;
     }
 
+    private List<int> getPositions(List<int> playerScores)
+    {
+        List<int> positions = new List<int>(new int[playerCount]);
+
+        List<int> distinctScores = playerScores.ToList();
+        distinctScores.Sort();
+        distinctScores.Reverse();
+
+        for (int i = 0; i < playerCount; i++) {
+            positions[i] = distinctScores.IndexOf(playerScores[i]) + 1;
+        }
+
+        return positions;
+    }
+
     public void finishMiniGame(List<int> gameScores)
     {
-        List<int> playerPoints = pointsFromScore(gameScores);
+        playerPositions = getPositions(gameScores);
+
+        // Load Cutscene
+        loadNextMiniGame(true);
+    }
+
+    public void finishCutscene()
+    {
+        List<int> playerPoints = pointsFromPositions(playerPositions);
 
         // Give Player points
         for (int i = 0; i < playerCount; i++) {
