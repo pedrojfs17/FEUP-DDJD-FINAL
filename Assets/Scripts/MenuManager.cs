@@ -4,29 +4,8 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject gameMenu; 
-
     private int _numPlayers = 4;
-    private int _numMiniGames = 1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainMenu.SetActive(true);
-    }
-
-    public void openGameMenu()
-    {
-        mainMenu.SetActive(false);
-        gameMenu.SetActive(true);
-    }
-
-    public void openMainMenu()
-    {
-        gameMenu.SetActive(false);
-        mainMenu.SetActive(true);
-    }
+    private int _numMiniGames = 2;
 
     public void quitGame()
     {
