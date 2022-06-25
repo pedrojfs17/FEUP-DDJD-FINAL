@@ -1,55 +1,26 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : GameLogic
+public class LevelLoader : MonoBehaviour
 {
-    bool[] playersReady = new bool[4];
+    [SerializeField] private Animator transition;
 
-    public Animator transition;
+    [SerializeField] private float transitionTime;
 
-    // Start is called before the first frame update
-    void Start()
+    public void LoadScene(string sceneName)
     {
-        
+        StartCoroutine(LoadSceneRoutine(sceneName));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void FixedUpdate() 
-    {
-        if (playersReady[0] && playersReady[1] && playersReady[2] && playersReady[3]) {
-            StartCoroutine(LoadLevel());
-        }
-    }
-
-    IEnumerator LoadLevel()
+    IEnumerator LoadSceneRoutine(string sceneName)
     {
         transition.SetTrigger("Start");
 
-        yield return new WaitForSeconds(1);
-        
-        SceneManager.LoadScene("GunLevel");
+        yield return new WaitForSeconds(transitionTime);
 
-    }
-
-    public override void playerAction(GameObject player){
-        // Get GameObject name
-        string name = player.name;
-
-        // Get last character of name
-        char lastChar = name[name.Length - 1];
-
-        // Convert last character to int
-        int playerNumber = int.Parse(lastChar.ToString());
-
-        playersReady[playerNumber - 1] = true;
-        
-        Debug.Log("Player " + playerNumber + " is ready");
+        SceneManager.LoadScene(sceneName);
     }
 }
