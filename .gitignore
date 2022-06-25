@@ -79,3 +79,6 @@ crashlytics-build.properties
 
 /[Aa]ssets/Models/
 /[Aa]ssets/Models.meta
+
+/[Aa]ssets/Plugins/
+/[Aa]ssets/Plugins.meta
