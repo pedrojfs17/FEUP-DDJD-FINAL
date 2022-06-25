@@ -7,7 +7,6 @@ enum GunMiniGameState {
     Preparing,
     WaitingForCountdown,
     WaitingforPlayerToFire,
-
     WaitingForNextRound,
     Finished
 }
