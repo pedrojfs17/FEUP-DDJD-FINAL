@@ -770,7 +770,6 @@ GameObject:
   - component: {fileID: 5170934479048064377}
   - component: {fileID: 5170934479048064372}
   - component: {fileID: 5170934479048064379}
-  - component: {fileID: 5170934479048064378}
   m_Layer: 0
   m_Name: PlayerRight
   m_TagString: Untagged
@@ -793,19 +792,6 @@ Transform:
   m_Father: {fileID: 5170934480853517066}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5170934479048064378
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934479048064376}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5170934479048064379
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1046,19 +1032,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5170934479358948792
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934479358948798}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5170934479358948793
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1120,7 +1093,6 @@ GameObject:
   - component: {fileID: 5170934479358948799}
   - component: {fileID: 5170934479358948794}
   - component: {fileID: 5170934479358948793}
-  - component: {fileID: 5170934479358948792}
   m_Layer: 0
   m_Name: PlayerRight
   m_TagString: Untagged
@@ -1154,27 +1126,13 @@ GameObject:
   - component: {fileID: 5170934479558731006}
   - component: {fileID: 5170934479558731005}
   - component: {fileID: 5170934479558731004}
-  - component: {fileID: 5170934479558730947}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Boat
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &5170934479558730947
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934479558730945}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5170934479558731004
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1322,22 +1280,6 @@ MonoBehaviour:
   rightAcceleration: 0
   leftPressedElapsed: 0
   rightPressedElapsed: 0
---- !u!54 &5170934479784226362
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934479784226365}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
 --- !u!1 &5170934479784226365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,10 +1290,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5170934479784226367}
   - component: {fileID: 5170934479784226360}
-  - component: {fileID: 5170934479784226362}
+  - component: {fileID: 5170934479784226368}
+  - component: {fileID: 5170934479784226369}
   m_Layer: 0
   m_Name: LeftBoat
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1377,6 +1320,35 @@ Transform:
   m_Father: {fileID: 5170934479337614515}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5170934479784226368
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170934479784226365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5170934479784226369
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170934479784226365}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &5170934479796384608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,19 +1395,6 @@ Transform:
   m_Father: {fileID: 5170934480853517066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5170934480200703757
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934480200703763}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5170934480200703758
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1497,10 +1456,9 @@ GameObject:
   - component: {fileID: 5170934480200703756}
   - component: {fileID: 5170934480200703759}
   - component: {fileID: 5170934480200703758}
-  - component: {fileID: 5170934480200703757}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Boat
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1524,7 +1482,6 @@ GameObject:
   - component: {fileID: 5170934480454489017}
   - component: {fileID: 5170934480454489012}
   - component: {fileID: 5170934480454489019}
-  - component: {fileID: 5170934480454489018}
   m_Layer: 0
   m_Name: PlayerLeft
   m_TagString: Untagged
@@ -1547,19 +1504,6 @@ Transform:
   m_Father: {fileID: 5170934480853517066}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5170934480454489018
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934480454489016}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5170934480454489019
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1621,7 +1565,6 @@ GameObject:
   - component: {fileID: 5170934480498152645}
   - component: {fileID: 5170934480498152640}
   - component: {fileID: 5170934480498152647}
-  - component: {fileID: 5170934480498152646}
   m_Layer: 0
   m_Name: PlayerLeft
   m_TagString: Untagged
@@ -1644,19 +1587,6 @@ Transform:
   m_Father: {fileID: 5170934479784226367}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5170934480498152646
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934480498152644}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5170934480498152647
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1699,22 +1629,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &5170934480853517060
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170934480853517065}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
 --- !u!1 &5170934480853517065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,10 +1639,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5170934480853517066}
   - component: {fileID: 5170934480853517067}
-  - component: {fileID: 5170934480853517060}
+  - component: {fileID: 5170934480853517068}
+  - component: {fileID: 5170934480853517069}
   m_Layer: 0
   m_Name: RightBoat
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1774,6 +1689,35 @@ MonoBehaviour:
   rightAcceleration: 0
   leftPressedElapsed: 0
   rightPressedElapsed: 0
+--- !u!65 &5170934480853517068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170934480853517065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5170934480853517069
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170934480853517065}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!20 &5170934480976451124
 Camera:
   m_ObjectHideFlags: 0
