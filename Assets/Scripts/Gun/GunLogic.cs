@@ -24,7 +24,6 @@ public class GunLogic : GameLogic
     private Vector3 playerBenchLeftPosition;
     private Vector3 playerBenchRightPosition;
     private GameObject[] players;
-    private GameObject[] scoresGUI;
     private int[] scores = new int[4];
     private GameObject roundGUI;
     private GameObject waitGoGUI;
@@ -40,7 +39,6 @@ public class GunLogic : GameLogic
         roundGUI = GameObject.Find("Round");
         waitGoGUI = GameObject.Find("Wait Go");
         players = GameObject.FindGameObjectsWithTag("Player");
-        scoresGUI = GameObject.FindGameObjectsWithTag("Score");
         playerLeftPosition = players[0].transform.position;
         playerRightPosition = players[1].transform.position;
         playerBenchLeftPosition = players[2].transform.position;
@@ -172,14 +170,6 @@ public class GunLogic : GameLogic
         {
             scores[playerNumber - 1] += 3;
         }
-
-
-        UpdateGUIScore(playerNumber);
-    }
-    
-    private void UpdateGUIScore(int playerNumber)
-    {
-        scoresGUI[playerNumber - 1].GetComponent<ScoreUIManager>().SetScore(scores[playerNumber - 1]);
 
     }
 
