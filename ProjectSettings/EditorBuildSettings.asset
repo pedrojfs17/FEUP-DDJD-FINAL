@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/GunLevel.unity
     guid: 88c44aaf4fe3ac220a54304ed37d4123
+  - enabled: 1
+    path: Assets/Scenes/FinalCutscene.unity
+    guid: 314ec0530c35fe04394497e2d46042bc
   m_configObjects: {}

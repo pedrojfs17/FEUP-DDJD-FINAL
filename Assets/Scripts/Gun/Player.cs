@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
         //Stop player from moving when
         if(elapsedFrames > interpolationFramesCount)
         {  
-            Debug.Log("STOPED");
             elapsedFrames = 0;
             isMoving = false;
         }

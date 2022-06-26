@@ -27,6 +27,9 @@ public class GunLogic : GameLogic
     private int[] scores = new int[4];
     private GameObject roundGUI;
     private GameObject waitGoGUI;
+    private GameObject continueGUI;
+    private Coroutine waitRoutine;
+
     
     
     private GunMiniGameState currentState = GunMiniGameState.Preparing;
@@ -38,6 +41,7 @@ public class GunLogic : GameLogic
         // Get game object with name Round
         roundGUI = GameObject.Find("Round");
         waitGoGUI = GameObject.Find("Wait Go");
+        continueGUI = GameObject.Find("Continue");
         players = GameObject.FindGameObjectsWithTag("Player");
         playerLeftPosition = players[0].transform.position;
         playerRightPosition = players[1].transform.position;
@@ -67,13 +71,25 @@ public class GunLogic : GameLogic
             updateRound(currentRound);
         }
 
-        if(currentState == GunMiniGameState.WaitingforPlayerToFire) 
+
+        if(currentState == GunMiniGameState.WaitingforPlayerToFire || currentState == GunMiniGameState.WaitingForCountdown) 
         {
+            // Ignore action if the player is not the one playing this round
             if (winner != playerLeft && winner != playerRight)
             {
                 return;
             }
-            SetGUIText(waitGoGUI, "Player " + winner + " Won\nPress the action button to continue");
+
+            string textToWrite = "Player " + winner + " Won";
+            if (currentState == GunMiniGameState.WaitingForCountdown)
+            {
+                StopCoroutine(waitRoutine);
+                winner = winner == playerLeft ? playerRight : playerLeft;
+                textToWrite = "Early Trigger! Player " + winner + " Won";
+
+            }
+            SetGUIText(waitGoGUI, textToWrite);
+            SetGUIText(continueGUI, "Press the Action button to continue");
             SetScore(winner);
             currentRound++;
             currentState = GunMiniGameState.WaitingForNextRound;            
@@ -94,7 +110,7 @@ public class GunLogic : GameLogic
 
         PrepareRound(round);
         
-        StartCoroutine(DoRound());
+        waitRoutine = StartCoroutine(DoRound());
     }
 
     private void PrepareRound(int round){
@@ -139,18 +155,19 @@ public class GunLogic : GameLogic
 
     private void UpdatePlayersPosition()
     {
-        players[playerLeft - 1].GetComponent<Player>().GoToPosition(playerLeftPosition, Quaternion.Euler(0, 0, 0));
-        players[playerRight - 1].GetComponent<Player>().GoToPosition(playerRightPosition, Quaternion.Euler(0, 180, 0));
-        players[playerBenchLeft - 1].GetComponent<Player>().GoToPosition(playerBenchLeftPosition, Quaternion.Euler(0, 90, 0));
-        players[playerBenchRight - 1].GetComponent<Player>().GoToPosition(playerBenchRightPosition, Quaternion.Euler(0, 90, 0));
+        players[playerLeft - 1].GetComponent<Player>().GoToPosition(playerLeftPosition, Quaternion.Euler(0, 90, 0));
+        players[playerRight - 1].GetComponent<Player>().GoToPosition(playerRightPosition, Quaternion.Euler(0, -90, 0));
+        players[playerBenchLeft - 1].GetComponent<Player>().GoToPosition(playerBenchLeftPosition, Quaternion.Euler(0, 180, 0));
+        players[playerBenchRight - 1].GetComponent<Player>().GoToPosition(playerBenchRightPosition, Quaternion.Euler(0, 180, 0));
 
     }
 
     private void UpdateGUI()
     {
-        // Call method SetText from roundGUI
         SetGUIText(roundGUI, "Round " + currentRound);
         SetGUIText(waitGoGUI, "Wait for go...");
+        SetGUIText(continueGUI, "");
+        
     }
 
     public void SetScore(int playerNumber)
@@ -219,6 +236,6 @@ public class GunLogic : GameLogic
     
     IEnumerator waitForAnimation()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
     }
 }

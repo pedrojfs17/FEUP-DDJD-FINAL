@@ -30,6 +30,7 @@ public class MenuManager : MonoBehaviour
 
     public void startMiniGame(string game)
     {
+        Debug.Log("Start MiniGame: " + game);
         GameStatus.instance.startMiniGame(_numPlayers, game);
     }
 }
