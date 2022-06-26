@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100821280}
   - component: {fileID: 100821279}
+  - component: {fileID: 100821281}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -361,6 +362,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &100821281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100821278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -838530165
+      Data2: 1298169385
+      Data3: -1939244630
+      Data4: -523700758
+    Path: event:/Gun shots/Close-shot
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &109502124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1455,7 +1486,7 @@ Transform:
   - {fileID: 173322723}
   - {fileID: 229076171}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &688280952 stripped
 RectTransform:
@@ -1709,6 +1740,7 @@ GameObject:
   - component: {fileID: 856291378}
   - component: {fileID: 856291377}
   - component: {fileID: 856291376}
+  - component: {fileID: 856291379}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1782,6 +1814,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 19.346, y: 0.666, z: 0.316}
+--- !u!114 &856291379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856291375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1001 &865667678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2459,7 +2504,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1147534989614607641, guid: 9511ac145bf106846a0ef5c47d3fd5c5, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1147534989614607641, guid: 9511ac145bf106846a0ef5c47d3fd5c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2507,7 +2552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4362230728017657449, guid: 9511ac145bf106846a0ef5c47d3fd5c5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9511ac145bf106846a0ef5c47d3fd5c5, type: 3}

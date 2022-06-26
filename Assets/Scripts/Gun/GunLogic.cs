@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 enum GunMiniGameState {
     Preparing,
@@ -82,7 +83,8 @@ public class GunLogic : GameLogic
                 return;
             }
             
-
+            GetComponent<FMODUnity.StudioEventEmitter>().Play();
+            
 
             string textToWrite = "Player " + winner + " Won";
             if (currentState == GunMiniGameState.WaitingForCountdown)
@@ -212,7 +214,7 @@ public class GunLogic : GameLogic
     private void FinishGame()
     {
         currentState = GunMiniGameState.Finished;
-        SetGUIText(waitGoGUI, "Player " + winners[3] + " won!");
+
         List<int> finalScore = new List<int>();
         finalScore.Add(winners[3]);
         finalScore.Add(losers[3]);
