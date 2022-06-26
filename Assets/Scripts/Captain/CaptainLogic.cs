@@ -12,7 +12,7 @@ public class CaptainLogic : GameLogic
     private bool moving = false;
 
     [SerializeField] private Transform gameCamera;
-
+    [SerializeField] private FMODUnity.StudioEventEmitter gunShot;
     [SerializeField] private ParticleSystem hitFx;
 
     private List<GameObject> players;
@@ -133,15 +133,31 @@ public class CaptainLogic : GameLogic
         }
 
         if (Timer <= 0) {
-            hitFx.transform.position = players[currentPlayer].transform.position + new Vector3(0.75f, 1.25f, 0);
-            hitFx.Play();
-            UpdatePlayer();
-            UpdateCamera();
-            ResetTimer();
+            GunShot();
         } else {
             currentScore += 100 * Time.deltaTime;
             roundScores[currentPlayer].text = ((int)currentScore).ToString();
         }
+    }
+
+    void GunShot()
+    {
+        ResetTimer();
+        gunShot.Play();
+
+        StartCoroutine(hitPlayer());
+    }
+
+    IEnumerator hitPlayer()
+    {
+        yield return new WaitForSeconds(0.4f);
+
+        hitFx.transform.position = players[currentPlayer].transform.position + new Vector3(0.75f, 1.25f, 0);
+        hitFx.Play();
+        hitFx.GetComponent<FMODUnity.StudioEventEmitter>().Play();
+
+        UpdatePlayer();
+        UpdateCamera();
     }
     
     public override void playerAction(GameObject player)

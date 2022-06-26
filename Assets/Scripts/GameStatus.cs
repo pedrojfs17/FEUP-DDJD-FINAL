@@ -19,6 +19,7 @@ public class GameStatus : MonoBehaviour
 
     // Instance
     public static GameStatus instance;
+    public static List<string> ColorMapping = new List<string>(){ "Blue", "Orange", "Green", "Yellow" };
 
     void Awake() {
         if (instance != null) {
@@ -76,7 +77,7 @@ public class GameStatus : MonoBehaviour
             if (gamesToPlay.Count > 0)
                 levelLoader.LoadScene(gamesToPlay.Dequeue());
             else
-                levelLoader.LoadScene("Menu");
+                levelLoader.LoadScene("FinalCutscene");
         }
 
     }
@@ -163,5 +164,12 @@ public class GameStatus : MonoBehaviour
 
         // Load Next Game
         loadNextMiniGame();
+    }
+
+    public void finishGame()
+    {
+        LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
+
+        levelLoader.LoadScene("Menu");
     }
 }
