@@ -21,7 +21,7 @@ public class CaptainLogic : GameLogic
 
     private List<int> scores;
     private List<TextMeshProUGUI> playerScores;
-    private List<TextMeshProUGUI> roundScores;
+    private TextMeshProUGUI accumulator;
     private float currentScore = 0;
 
     private TimeSpan gameTimer;
@@ -53,15 +53,15 @@ public class CaptainLogic : GameLogic
 
         players = new List<GameObject>();
         playerScores = new List<TextMeshProUGUI>();
-        roundScores = new List<TextMeshProUGUI>();
         scores = new List<int>(new int[numPlayers]);
+
+        accumulator = allScores.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         // Set active only the correct number of players
         for (int i = 0; i < 4; i++) {
             if (i < numPlayers) {
                 players.Add(allPlayers.GetChild(i).gameObject);
-                playerScores.Add(allScores.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>());
-                roundScores.Add(allScores.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>());
+                playerScores.Add(allScores.GetChild(i+1).GetComponent<TextMeshProUGUI>());
             } else {
                 allPlayers.GetChild(i).gameObject.SetActive(false);
                 allScores.GetChild(i).gameObject.SetActive(false);
@@ -87,7 +87,6 @@ public class CaptainLogic : GameLogic
     void UpdatePlayer()
     {
         currentScore = 0;
-        roundScores[currentPlayer].text = currentScore.ToString();
 
         moving = true;
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = false;
@@ -129,14 +128,14 @@ public class CaptainLogic : GameLogic
             GameStatus.instance.finishMiniGame(scores);
             return;
         } else {
-            timerText.text = "Time\n" + gameTimer.ToString("mm':'ss");
+            timerText.text = "TIME\n" + gameTimer.ToString("mm':'ss");
         }
 
         if (Timer <= 0) {
             GunShot();
         } else {
-            currentScore += 100 * Time.deltaTime;
-            roundScores[currentPlayer].text = ((int)currentScore).ToString();
+            currentScore += 50 * Time.deltaTime;
+            accumulator.text = ((int)currentScore).ToString();
         }
     }
 
