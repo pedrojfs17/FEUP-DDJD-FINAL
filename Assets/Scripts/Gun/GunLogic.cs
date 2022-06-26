@@ -7,6 +7,7 @@ enum GunMiniGameState {
     Preparing,
     WaitingForCountdown,
     WaitingforPlayerToFire,
+    Waiting,
     WaitingForNextRound,
     Finished
 }
@@ -53,9 +54,9 @@ public class GunLogic : GameLogic
         }
 
         // Wait for animation to finish
-        StartCoroutine(waitForAnimation());
+        StartCoroutine(wait(2.5f));
 
-        updateRound(1);
+        updateRound();
 
     }
 
@@ -68,7 +69,8 @@ public class GunLogic : GameLogic
     private void updateMiniGame(int winner) {
         if(currentState == GunMiniGameState.WaitingForNextRound)
         {
-            updateRound(currentRound);
+            updateRound();
+            return;
         }
 
 
@@ -79,6 +81,8 @@ public class GunLogic : GameLogic
             {
                 return;
             }
+            
+
 
             string textToWrite = "Player " + winner + " Won";
             if (currentState == GunMiniGameState.WaitingForCountdown)
@@ -88,18 +92,21 @@ public class GunLogic : GameLogic
                 textToWrite = "Early Trigger! Player " + winner + " Won";
 
             }
+            currentState = GunMiniGameState.Waiting;
+            
             SetGUIText(waitGoGUI, textToWrite);
             SetGUIText(continueGUI, "Press the Action button to continue");
             SetScore(winner);
             currentRound++;
-            currentState = GunMiniGameState.WaitingForNextRound;            
+
+            StartCoroutine(waitToEnable(0.5f));
         }
     }
 
 
-    private void updateRound(int round)
+    private void updateRound()
     {
-        if(round > 4)
+        if(currentRound > 4)
         {
             FinishGame();
             return;
@@ -108,7 +115,7 @@ public class GunLogic : GameLogic
 
         currentState = GunMiniGameState.Preparing;
 
-        PrepareRound(round);
+        PrepareRound(currentRound);
         
         waitRoutine = StartCoroutine(DoRound());
     }
@@ -234,8 +241,15 @@ public class GunLogic : GameLogic
             
     }
     
-    IEnumerator waitForAnimation()
+    IEnumerator wait(float waitTime)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
+    }
+    
+    IEnumerator waitToEnable(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        currentState = GunMiniGameState.WaitingForNextRound;
     }
 }
