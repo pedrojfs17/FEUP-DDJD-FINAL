@@ -17,9 +17,10 @@ public class GameStatus : MonoBehaviour
     public List<int> playerScores { get; private set; }
     public List<int> playerPositions { get; private set; }
 
+    public string currentGame;
+
     // Instance
     public static GameStatus instance;
-    public static List<string> ColorMapping = new List<string>(){ "Blue", "Orange", "Green", "Yellow" };
 
     void Awake() {
         if (instance != null) {
@@ -56,10 +57,12 @@ public class GameStatus : MonoBehaviour
 
         gamesToPlay = new Queue<string>();
 
-        while (nMiniGames > 0) {
+        while (nMiniGames > 0 && availableGames.Count > 0) {
             int randomNumber = UnityEngine.Random.Range(0, availableGames.Count);
 
+            gamesToPlay.Enqueue("Instructions");
             gamesToPlay.Enqueue(availableGames[randomNumber]);
+            gamesToPlay.Enqueue("Cutscene");
 
             availableGames.RemoveAt(randomNumber);
 
@@ -67,19 +70,20 @@ public class GameStatus : MonoBehaviour
         }
     }
 
-    private void loadNextMiniGame(bool loadCutscene = false)
+    private void loadNextMiniGame()
     {
         LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
 
-        if (loadCutscene)
-            levelLoader.LoadScene("Cutscene");
-        else {
-            if (gamesToPlay.Count > 0)
-                levelLoader.LoadScene(gamesToPlay.Dequeue());
-            else
-                levelLoader.LoadScene("FinalCutscene");
-        }
+        if (gamesToPlay.Count > 0) {
+            string sceneToLoad = gamesToPlay.Dequeue();
 
+            if (sceneToLoad == "Instructions")
+                currentGame = gamesToPlay.Peek();
+
+            levelLoader.LoadScene(sceneToLoad);
+        }
+        else
+            levelLoader.LoadScene("FinalCutscene");
     }
 
     private void initializePlayers(int nPlayers)
@@ -97,9 +101,14 @@ public class GameStatus : MonoBehaviour
         gamesToPlay = new Queue<string>();
 
         if (loadScene) {
+            gamesToPlay.Enqueue("Instructions");
             gamesToPlay.Enqueue(miniGame);
-            loadNextMiniGame();
         }
+
+        gamesToPlay.Enqueue("Cutscene");
+
+        if (loadScene)
+            loadNextMiniGame();
     }
 
     public void startFullGame(int nPlayers, int nMiniGames)
@@ -148,8 +157,7 @@ public class GameStatus : MonoBehaviour
     {
         playerPositions = getPositions(gameScores);
 
-        // Load Cutscene
-        loadNextMiniGame(true);
+        loadNextMiniGame();
     }
 
     public void finishCutscene()
@@ -171,5 +179,10 @@ public class GameStatus : MonoBehaviour
         LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
 
         levelLoader.LoadScene("Menu");
+    }
+
+    public void finishInstructions()
+    {
+        loadNextMiniGame();
     }
 }

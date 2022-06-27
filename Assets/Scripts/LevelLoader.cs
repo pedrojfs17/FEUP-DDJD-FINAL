@@ -16,6 +16,8 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadSceneRoutine(string sceneName)
     {
+        GetComponent<FMODUnity.StudioEventEmitter>().Play();
+
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);

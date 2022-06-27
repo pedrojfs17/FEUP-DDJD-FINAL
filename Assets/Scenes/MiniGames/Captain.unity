@@ -1363,11 +1363,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1230015185
-      Data2: 1227852977
-      Data3: 225286292
-      Data4: -353083860
-    Path: event:/Gun shots/Long-shot
+      Data1: -838530165
+      Data2: 1298169385
+      Data3: -1939244630
+      Data4: -523700758
+    Path: event:/Gun shots/Close-shot
   Event: 
   PlayEvent: 0
   StopEvent: 0

@@ -14,14 +14,17 @@ public class FinalCutsceneManager : MonoBehaviour
     [SerializeField] private List<GameObject> birds;
     [SerializeField] private List<BoxCollider> areas;
     [SerializeField] private Transform center;
-    [SerializeField] private TextMeshProUGUI winnerText;
 
     private List<List<GameObject>> spawnedObjects;
+
     private List<TextMeshProUGUI> scoreTexts;
+    private Transform resultText;
 
     void Start()
     {
         Transform scores = GameObject.Find("Scores").transform;
+        resultText = scores.GetChild(0);
+
         spawnedObjects = new List<List<GameObject>>();
         scoreTexts = new List<TextMeshProUGUI>();
 
@@ -30,7 +33,7 @@ public class FinalCutsceneManager : MonoBehaviour
         playerPositions = GameStatus.instance.playerPositions;
 
         for (int i = 0; i < numPlayers; i++) {
-            scoreTexts.Add(scores.GetChild(i).GetComponent<TextMeshProUGUI>());
+            scoreTexts.Add(scores.GetChild(i + 1).GetComponent<TextMeshProUGUI>());
             spawnedObjects.Add(new List<GameObject>());
             for (int j = 0; j < playerScores[i]; j++) {
                 SpawnInArea(birds[i], areas[i], i);
@@ -120,9 +123,11 @@ public class FinalCutsceneManager : MonoBehaviour
         List<int> winners = Enumerable.Range(0, playerPositions.Count).Where(i => playerPositions[i] == 1).ToList();
 
         if (winners.Count > 1)
-            winnerText.text = "DRAW";
-        else
-            winnerText.text = "WINNER\n" + GameStatus.ColorMapping[winners[0]];
+            resultText.GetChild(0).gameObject.SetActive(true);
+        else {
+            resultText.GetChild(1).gameObject.SetActive(true);
+            resultText.GetChild(winners[0] + 2).gameObject.SetActive(true);
+        }
 
         StartCoroutine(EndCutscene());
     }
