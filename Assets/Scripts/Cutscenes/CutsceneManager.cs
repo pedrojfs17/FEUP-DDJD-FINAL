@@ -18,7 +18,7 @@ public class CutsceneManager : MonoBehaviour
 
     void Start()
     {
-        playerPositions = GameStatus.instance.playerPositions;
+        playerPositions = GameStatus.instance.lastGamePositions;
         playerScores = GameStatus.instance.playerScores;
 
         players = new Queue<Tuple<PlayableDirector, TextMeshProUGUI, ParticleSystem, int>>();

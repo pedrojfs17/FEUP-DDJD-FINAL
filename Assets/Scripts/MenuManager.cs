@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     private int _numPlayers = 4;
-    private int _numMiniGames = 2;
+    private int _numMiniGames = 3;
 
     public void quitGame()
     {

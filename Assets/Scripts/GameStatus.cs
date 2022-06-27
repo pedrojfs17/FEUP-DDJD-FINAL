@@ -16,6 +16,7 @@ public class GameStatus : MonoBehaviour
 
     public List<int> playerScores { get; private set; }
     public List<int> playerPositions { get; private set; }
+    public List<int> lastGamePositions { get; private set; }
 
     public string currentGame;
 
@@ -155,20 +156,21 @@ public class GameStatus : MonoBehaviour
 
     public void finishMiniGame(List<int> gameScores)
     {
-        playerPositions = getPositions(gameScores);
+        lastGamePositions = getPositions(gameScores);
 
         loadNextMiniGame();
     }
 
     public void finishCutscene()
     {
-        List<int> playerPoints = pointsFromPositions(playerPositions);
+        List<int> playerPoints = pointsFromPositions(lastGamePositions);
 
         // Give Player points
         for (int i = 0; i < playerCount; i++) {
             playerScores[i] += playerPoints[i];
-            print("Player " + (i + 1).ToString() + " has " + playerScores[i].ToString() + " points!");
         }
+        
+        playerPositions = getPositions(playerScores);
 
         // Load Next Game
         loadNextMiniGame();
