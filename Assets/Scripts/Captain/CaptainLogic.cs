@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 using TMPro;
 
 public class CaptainLogic : GameLogic
 {
-    private bool playing = false;
+    public bool playing = false;
+    private bool moving = false;
 
     [SerializeField] private Transform gameCamera;
+    [SerializeField] private FMODUnity.StudioEventEmitter gunShot;
+    [SerializeField] private ParticleSystem hitFx;
 
     private List<GameObject> players;
     private int currentPlayer;
@@ -24,6 +28,7 @@ public class CaptainLogic : GameLogic
     public TextMeshProUGUI timerText;
 
     private float Timer = 0;
+    private float turnDelay;
 
     void Start()
     {
@@ -32,11 +37,12 @@ public class CaptainLogic : GameLogic
         }
 
         numPlayers = GameStatus.instance.playerCount;
+        turnDelay = 0.4f + numPlayers * 0.1f;
         InitializePlayers();
         UpdateCamera();
         ResetTimer();
 
-        gameTimer = TimeSpan.FromSeconds(10);
+        gameTimer = TimeSpan.FromSeconds(20);
         playing = true;
     }
 
@@ -83,14 +89,32 @@ public class CaptainLogic : GameLogic
         currentScore = 0;
         roundScores[currentPlayer].text = currentScore.ToString();
 
+        moving = true;
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = false;
         currentPlayer = (currentPlayer + 1) % numPlayers;
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = true;
+
+        StartCoroutine(endMovement());
+    }
+
+    IEnumerator endMovement()
+    {
+        yield return new WaitForSeconds(turnDelay);
+        moving = false;
+    }
+
+    void FinishMovement() {
+        moving = false;
     }
 
     void ResetTimer()
     {
-        Timer = UnityEngine.Random.Range(10, 20);
+        Timer = UnityEngine.Random.Range(5f, 10f);
+    }
+
+    public Vector3 GetFirstPlayerPosition()
+    {
+        return players[currentPlayer].transform.position;
     }
 
     void Update()
@@ -109,18 +133,36 @@ public class CaptainLogic : GameLogic
         }
 
         if (Timer <= 0) {
-            UpdatePlayer();
-            UpdateCamera();
-            ResetTimer();
+            GunShot();
         } else {
             currentScore += 100 * Time.deltaTime;
             roundScores[currentPlayer].text = ((int)currentScore).ToString();
         }
     }
+
+    void GunShot()
+    {
+        ResetTimer();
+        gunShot.Play();
+
+        StartCoroutine(hitPlayer());
+    }
+
+    IEnumerator hitPlayer()
+    {
+        yield return new WaitForSeconds(0.4f);
+
+        hitFx.transform.position = players[currentPlayer].transform.position + new Vector3(0.75f, 1.25f, 0);
+        hitFx.Play();
+        hitFx.GetComponent<FMODUnity.StudioEventEmitter>().Play();
+
+        UpdatePlayer();
+        UpdateCamera();
+    }
     
     public override void playerAction(GameObject player)
     {
-        if (players[currentPlayer] == player) {
+        if (!moving && players[currentPlayer] == player) {
             scores[currentPlayer] += (int) currentScore;
             playerScores[currentPlayer].text = (scores[currentPlayer]).ToString();
             UpdatePlayer();
