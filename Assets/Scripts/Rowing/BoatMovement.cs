@@ -10,10 +10,13 @@ public class BoatMovement : MonoBehaviour
     
     private bool leftPressed = false, rightPressed = false;
     
-    private const float ACCELERATION_STEP = 5f;
-    private const float MAX_ACCELERATION = 90f;
+    private const float ACCELERATION_STEP = 20f;
+    private const float MAX_ACCELERATION = 360f;
     private const float MIN_ACCELERATION = -240f;
-    private const float MAX_SPEED = 40f;
+    private const float MAX_SPEED = 160f;
+    
+    [SerializeField] private Transform leftPaddle, rightPaddle;
+    public bool playing = false;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class BoatMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!playing) return;
         updateAnchorPoints();
         updateAccelerations(); 
         updateSpeeds(Time.deltaTime);
@@ -72,6 +76,7 @@ public class BoatMovement : MonoBehaviour
         } else {
             leftPressedElapsed = 0f;
             leftDeaccelerate();
+            leftPaddle.localEulerAngles = new Vector3(30, -60, 0);
         }
         
         if (rightPressed) {
@@ -86,6 +91,7 @@ public class BoatMovement : MonoBehaviour
         } else {
             rightPressedElapsed = 0f;
             rightDeaccelerate();
+            rightPaddle.localEulerAngles = new Vector3(30, 60, 0);
         }
     }
     
@@ -147,7 +153,13 @@ public class BoatMovement : MonoBehaviour
     }
     
     private void updatePositions(float deltaTime) {
-        transform.RotateAround(rightCenter, transform.up, leftSpeed * deltaTime);
         transform.RotateAround(leftCenter, -transform.up, rightSpeed * deltaTime);
+        transform.RotateAround(rightCenter, transform.up, leftSpeed * deltaTime);
+        if (leftPressed && leftPressedElapsed <= 1f) {
+            leftPaddle.localEulerAngles = new Vector3(30, -60 - leftPressedElapsed*60, 0);
+        }
+        if (rightPressed && rightPressedElapsed <= 1f) {
+            rightPaddle.localEulerAngles = new Vector3(30, 60 + rightPressedElapsed*60, 0);
+        }
     }
 }
