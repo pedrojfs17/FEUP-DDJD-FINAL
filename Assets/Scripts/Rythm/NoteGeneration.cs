@@ -8,7 +8,7 @@ public class NoteGeneration : MonoBehaviour
     public GameObject scroller;
     private float time;
     private bool hasStarted;
-    // Start is called before the first frame update
+    public RythmLogic rythmLogic;
     void Start()
     {
         time = 0;
@@ -17,9 +17,11 @@ public class NoteGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!rythmLogic.playing) return;
+
         time += Time.deltaTime;
 
-        if (time < 1.0f) return;
+        if (time < 1.5f) return;
         
         int noteIndex = Random.Range(0, notes.Count);
 
