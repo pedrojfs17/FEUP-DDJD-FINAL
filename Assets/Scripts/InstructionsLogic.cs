@@ -10,6 +10,8 @@ public class InstructionsLogic : GameLogic
     private List<Animator> playersAnimations;
     private List<bool> playersReadyStatus;
 
+    private FMODUnity.StudioEventEmitter readySoundFx;
+
     private void Start() {
         string currentGame = GameStatus.instance.currentGame;
         Transform gameInstructions = GameObject.Find("GameInstructions").transform;
@@ -21,7 +23,10 @@ public class InstructionsLogic : GameLogic
             }
         }
 
-        numPlayers = GameStatus.instance.playerCount;
+        readySoundFx = GetComponent<FMODUnity.StudioEventEmitter>();
+
+        // numPlayers = GameStatus.instance.playerCount;
+        numPlayers = 4;
         playersReady = 0;
 
         Transform allPlayers = GameObject.Find("Players").transform;
@@ -56,6 +61,8 @@ public class InstructionsLogic : GameLogic
         playersAnimations[index].Play("Ready");
         playersReadyStatus[index] = true;
         playersReady += 1;
+
+        readySoundFx.Play();
 
         if (playersReady == numPlayers) {
             GameStatus.instance.finishInstructions();

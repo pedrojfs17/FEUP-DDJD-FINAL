@@ -12,7 +12,7 @@ public class GameStatus : MonoBehaviour
     public int playerCount { get; private set; }
 
     private List<string> miniGames;
-    private Queue<string> gamesToPlay;
+    private Queue<string> scenesToPlay;
 
     public List<int> playerScores { get; private set; }
     public List<int> playerPositions { get; private set; }
@@ -56,14 +56,14 @@ public class GameStatus : MonoBehaviour
     {
         List<string> availableGames = new List<string>(miniGames);
 
-        gamesToPlay = new Queue<string>();
+        scenesToPlay = new Queue<string>();
 
         while (nMiniGames > 0 && availableGames.Count > 0) {
             int randomNumber = UnityEngine.Random.Range(0, availableGames.Count);
 
-            gamesToPlay.Enqueue("Instructions");
-            gamesToPlay.Enqueue(availableGames[randomNumber]);
-            gamesToPlay.Enqueue("Cutscene");
+            scenesToPlay.Enqueue("Instructions");
+            scenesToPlay.Enqueue(availableGames[randomNumber]);
+            scenesToPlay.Enqueue("Cutscene");
 
             availableGames.RemoveAt(randomNumber);
 
@@ -71,15 +71,15 @@ public class GameStatus : MonoBehaviour
         }
     }
 
-    private void loadNextMiniGame()
+    private void loadNextScene()
     {
         LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
 
-        if (gamesToPlay.Count > 0) {
-            string sceneToLoad = gamesToPlay.Dequeue();
+        if (scenesToPlay.Count > 0) {
+            string sceneToLoad = scenesToPlay.Dequeue();
 
             if (sceneToLoad == "Instructions")
-                currentGame = gamesToPlay.Peek();
+                currentGame = scenesToPlay.Peek();
 
             levelLoader.LoadScene(sceneToLoad);
         }
@@ -99,17 +99,17 @@ public class GameStatus : MonoBehaviour
 
         playing = true;
         
-        gamesToPlay = new Queue<string>();
+        scenesToPlay = new Queue<string>();
 
         if (loadScene) {
-            gamesToPlay.Enqueue("Instructions");
-            gamesToPlay.Enqueue(miniGame);
+            scenesToPlay.Enqueue("Instructions");
+            scenesToPlay.Enqueue(miniGame);
         }
 
-        gamesToPlay.Enqueue("Cutscene");
+        scenesToPlay.Enqueue("Cutscene");
 
         if (loadScene)
-            loadNextMiniGame();
+            loadNextScene();
     }
 
     public void startFullGame(int nPlayers, int nMiniGames)
@@ -123,7 +123,7 @@ public class GameStatus : MonoBehaviour
         playing = true;
 
         // load Game
-        loadNextMiniGame();
+        loadNextScene();
     }
 
     private List<int> pointsFromPositions(List<int> playerPositions)
@@ -144,21 +144,28 @@ public class GameStatus : MonoBehaviour
         List<int> positions = new List<int>(new int[playerCount]);
 
         List<int> distinctScores = playerScores.ToList();
+        distinctScores = distinctScores.Distinct().ToList();
         distinctScores.Sort();
         distinctScores.Reverse();
 
         for (int i = 0; i < playerCount; i++) {
-            positions[i] = distinctScores.IndexOf(playerScores[i]) + 1;
+            int position = distinctScores.IndexOf(playerScores[i]) + 1;
+            positions[i] = (position == distinctScores.Count) ? 4 : position;
         }
 
         return positions;
+    }
+    
+    public void finishInstructions()
+    {
+        loadNextScene();
     }
 
     public void finishMiniGame(List<int> gameScores)
     {
         lastGamePositions = getPositions(gameScores);
 
-        loadNextMiniGame();
+        loadNextScene();
     }
 
     public void finishCutscene()
@@ -173,7 +180,7 @@ public class GameStatus : MonoBehaviour
         playerPositions = getPositions(playerScores);
 
         // Load Next Game
-        loadNextMiniGame();
+        loadNextScene();
     }
 
     public void finishGame()
@@ -181,10 +188,5 @@ public class GameStatus : MonoBehaviour
         LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
 
         levelLoader.LoadScene("Menu");
-    }
-
-    public void finishInstructions()
-    {
-        loadNextMiniGame();
     }
 }
