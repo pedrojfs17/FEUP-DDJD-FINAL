@@ -63,10 +63,8 @@ public class CloudGenerator : MonoBehaviour
 
     void AttemptSpawn()
     {
-        if (gameLogic.playing) {
-            SpawnCloud();
+        SpawnCloud();
 
-            Invoke("AttemptSpawn", spawnInterval);
-        }
+        Invoke("AttemptSpawn", spawnInterval);
     }
 }

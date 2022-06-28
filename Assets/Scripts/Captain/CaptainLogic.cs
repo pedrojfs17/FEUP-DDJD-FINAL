@@ -22,6 +22,8 @@ public class CaptainLogic : GameLogic
     private List<int> scores;
     private List<TextMeshProUGUI> playerScores;
 
+    private FMODUnity.StudioEventEmitter music;
+
     [SerializeField] private TextMeshProUGUI accumulator;
     [SerializeField] private TextMeshProUGUI countDown;
     [SerializeField] private TextMeshProUGUI timerText;
@@ -33,6 +35,8 @@ public class CaptainLogic : GameLogic
     private float Timer = 0;
     private float turnDelay;
 
+    private int GAME_TIME = 60;
+
     void Start()
     {
         if (!GameStatus.instance.playing) {
@@ -43,6 +47,8 @@ public class CaptainLogic : GameLogic
         turnDelay = 0.4f + numPlayers * 0.1f;
         InitializePlayers();
         UpdateCamera();
+
+        music = GetComponent<FMODUnity.StudioEventEmitter>();
 
         StartCoroutine(StartCountdown());
     }
@@ -61,11 +67,13 @@ public class CaptainLogic : GameLogic
         }
 
         countDown.text = "START";
+        music.Play();
+
         yield return waitHalfSecond;
         countDown.text = "";
 
         ResetTimer();
-        gameTimer = TimeSpan.FromSeconds(20);
+        gameTimer = TimeSpan.FromSeconds(GAME_TIME);
         playing = true;
     }
 
@@ -162,14 +170,18 @@ public class CaptainLogic : GameLogic
     void GunShot()
     {
         ResetTimer();
-        gunShot.Play();
+        music.EventInstance.setPaused(true);
 
         StartCoroutine(hitPlayer());
     }
 
     IEnumerator hitPlayer()
     {
-        yield return new WaitForSeconds(0.4f);
+        WaitForSeconds timeToWait = new WaitForSeconds(0.4f);
+
+        yield return timeToWait;
+
+        gunShot.Play();
 
         hitFx.transform.position = players[currentPlayer].transform.position + new Vector3(0.75f, 1.25f, 0);
         hitFx.Play();
@@ -177,6 +189,10 @@ public class CaptainLogic : GameLogic
 
         UpdatePlayer();
         UpdateCamera();
+
+        yield return timeToWait;
+        
+        music.EventInstance.setPaused(false);
     }
     
     public override void playerAction(GameObject player)
@@ -193,6 +209,7 @@ public class CaptainLogic : GameLogic
     {
         playing = false;
         timerText.text = "FINISHED";
+        music.Stop();
 
         yield return new WaitForSeconds(1.5f);
 
