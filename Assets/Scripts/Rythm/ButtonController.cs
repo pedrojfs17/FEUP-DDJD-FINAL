@@ -10,18 +10,9 @@ public class ButtonController : MonoBehaviour
     
     public NoteObject ball;
 
-    // Start is called before the first frame update
     void Start()
     {
         ball = null;
-        // currentMaterial = GetComponent<MeshRenderer>();
-    }
-
-    public NoteObject hitBall()
-    {
-        NoteObject currentBall = ball;
-        ball = null;
-        return currentBall;
     }
 
     private void OnTriggerEnter(Collider other) {

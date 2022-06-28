@@ -12,9 +12,13 @@ public class GameStatus : MonoBehaviour
     public int playerCount { get; private set; }
 
     private List<string> miniGames;
-    private Queue<string> gamesToPlay;
+    private Queue<string> scenesToPlay;
 
-    private List<int> playerScores;
+    public List<int> playerScores { get; private set; }
+    public List<int> playerPositions { get; private set; }
+    public List<int> lastGamePositions { get; private set; }
+
+    public string currentGame;
 
     // Instance
     public static GameStatus instance;
@@ -52,12 +56,14 @@ public class GameStatus : MonoBehaviour
     {
         List<string> availableGames = new List<string>(miniGames);
 
-        gamesToPlay = new Queue<string>();
+        scenesToPlay = new Queue<string>();
 
-        while (nMiniGames > 0) {
+        while (nMiniGames > 0 && availableGames.Count > 0) {
             int randomNumber = UnityEngine.Random.Range(0, availableGames.Count);
 
-            gamesToPlay.Enqueue(availableGames[randomNumber]);
+            scenesToPlay.Enqueue("Instructions");
+            scenesToPlay.Enqueue(availableGames[randomNumber]);
+            scenesToPlay.Enqueue("Cutscene");
 
             availableGames.RemoveAt(randomNumber);
 
@@ -65,12 +71,20 @@ public class GameStatus : MonoBehaviour
         }
     }
 
-    private void loadNextMiniGame()
+    private void loadNextScene()
     {
-        if (gamesToPlay.Count > 0)
-            SceneManager.LoadScene(gamesToPlay.Dequeue());
+        LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
+
+        if (scenesToPlay.Count > 0) {
+            string sceneToLoad = scenesToPlay.Dequeue();
+
+            if (sceneToLoad == "Instructions")
+                currentGame = scenesToPlay.Peek();
+
+            levelLoader.LoadScene(sceneToLoad);
+        }
         else
-            SceneManager.LoadScene("Menu");
+            levelLoader.LoadScene("FinalCutscene");
     }
 
     private void initializePlayers(int nPlayers)
@@ -85,12 +99,17 @@ public class GameStatus : MonoBehaviour
 
         playing = true;
         
-        gamesToPlay = new Queue<string>();
+        scenesToPlay = new Queue<string>();
 
         if (loadScene) {
-            gamesToPlay.Enqueue(miniGame);
-            loadNextMiniGame();
+            scenesToPlay.Enqueue("Instructions");
+            scenesToPlay.Enqueue(miniGame);
         }
+
+        scenesToPlay.Enqueue("Cutscene");
+
+        if (loadScene)
+            loadNextScene();
     }
 
     public void startFullGame(int nPlayers, int nMiniGames)
@@ -104,34 +123,70 @@ public class GameStatus : MonoBehaviour
         playing = true;
 
         // load Game
-        loadNextMiniGame();
+        loadNextScene();
     }
 
-    private List<int> pointsFromScore(List<int> playerScores)
+    private List<int> pointsFromPositions(List<int> playerPositions)
     {
         List<int> points = new List<int>(new int[playerCount]);
 
-        List<int> distinctScores = playerScores.Distinct().ToList();
-        distinctScores.Sort();
+        List<int> POSITION_POINTS = new List<int> { 5, 3, 1, 0 };
 
         for (int i = 0; i < playerCount; i++) {
-            points[i] = distinctScores.IndexOf(playerScores[i]);
+            points[i] = POSITION_POINTS[playerPositions[i] - 1];
         }
 
         return points;
     }
 
+    private List<int> getPositions(List<int> playerScores)
+    {
+        List<int> positions = new List<int>(new int[playerCount]);
+
+        List<int> distinctScores = playerScores.ToList();
+        distinctScores = distinctScores.Distinct().ToList();
+        distinctScores.Sort();
+        distinctScores.Reverse();
+
+        for (int i = 0; i < playerCount; i++) {
+            int position = distinctScores.IndexOf(playerScores[i]) + 1;
+            positions[i] = (position == distinctScores.Count) ? 4 : position;
+        }
+
+        return positions;
+    }
+    
+    public void finishInstructions()
+    {
+        loadNextScene();
+    }
+
     public void finishMiniGame(List<int> gameScores)
     {
-        List<int> playerPoints = pointsFromScore(gameScores);
+        lastGamePositions = getPositions(gameScores);
+
+        loadNextScene();
+    }
+
+    public void finishCutscene()
+    {
+        List<int> playerPoints = pointsFromPositions(lastGamePositions);
 
         // Give Player points
         for (int i = 0; i < playerCount; i++) {
             playerScores[i] += playerPoints[i];
-            print("Player " + (i + 1).ToString() + " has " + playerScores[i].ToString() + " points!");
         }
+        
+        playerPositions = getPositions(playerScores);
 
         // Load Next Game
-        loadNextMiniGame();
+        loadNextScene();
+    }
+
+    public void finishGame()
+    {
+        LevelLoader levelLoader = GameObject.FindObjectOfType<LevelLoader>();
+
+        levelLoader.LoadScene("Menu");
     }
 }

@@ -74,5 +74,14 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/[Aa]ssets/TextMesh Pro
-/[Aa]ssets/TextMesh Pro.meta
+/[Aa]ssets/ThirdParty/
+/[Aa]ssets/ThirdParty.meta
+
+/[Aa]ssets/Models/
+/[Aa]ssets/Models.meta
+
+/[Aa]ssets/Plugins/
+/[Aa]ssets/Plugins.meta
+
+fmod.log
+fmod_editor.log

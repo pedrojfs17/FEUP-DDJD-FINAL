@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class NoteGeneration : MonoBehaviour
 {
-    public GameObject note;
+    public List<GameObject> notes;
     public GameObject scroller;
     private float time;
     private bool hasStarted;
-    // Start is called before the first frame update
+    public RythmLogic rythmLogic;
     void Start()
     {
         time = 0;
@@ -17,14 +17,17 @@ public class NoteGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time+=Time.deltaTime;
-        int rand = Random.Range(0,100);
+        if(!rythmLogic.playing) return;
+
+        time += Time.deltaTime;
+
+        if (time < 1.5f) return;
         
-        if(rand >= 10 && time >= 1f){
-            GameObject clone = Instantiate(note, transform.position, Quaternion.identity, scroller.transform);
-            clone.name= clone.name.Replace("(Clone)", "C");
-            clone.tag = "clone";
-            time=0;
-        }
+        int noteIndex = Random.Range(0, notes.Count);
+
+        GameObject clone = Instantiate(notes[noteIndex], transform.position, Quaternion.identity, scroller.transform);
+        clone.name= clone.name.Replace("(Clone)", "C");
+        clone.tag = "clone";
+        time=0;
     }
 }

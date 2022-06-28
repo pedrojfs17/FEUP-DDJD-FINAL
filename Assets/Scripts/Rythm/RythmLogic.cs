@@ -7,8 +7,9 @@ using TMPro;
 
 public class RythmLogic : GameLogic
 {
-    private bool playing = false;
+    public bool playing = false;
 
+    [SerializeField] private TextMeshProUGUI countDown;
     public TextMeshProUGUI timerText;
     private TimeSpan gameTimer;
 
@@ -20,13 +21,32 @@ public class RythmLogic : GameLogic
     void Start()
     {
         if (!GameStatus.instance.playing) {
-            GameStatus.instance.startMiniGame(2, SceneManager.GetActiveScene().name, false);
+            GameStatus.instance.startMiniGame(4, SceneManager.GetActiveScene().name, false);
         }
 
         numPlayers = GameStatus.instance.playerCount;
         InitializePlayers();
+        StartCoroutine(StartCountdown());
+    }
 
-        gameTimer = TimeSpan.FromSeconds(10);
+    IEnumerator StartCountdown()
+    {
+        WaitForSeconds waitHalfSecond = new WaitForSeconds(0.5f);
+        WaitForSeconds waitOneSecond = new WaitForSeconds(1);
+
+        yield return waitOneSecond;
+        yield return waitOneSecond;
+
+        for (int i = 3; i > 0; i--) {
+            countDown.text = i.ToString();
+            yield return waitOneSecond;
+        }
+
+        countDown.text = "START";
+        yield return waitHalfSecond;
+        countDown.text = "";
+
+        gameTimer = TimeSpan.FromSeconds(60);
         playing = true;
     }
 
@@ -43,7 +63,7 @@ public class RythmLogic : GameLogic
         // Set active only the correct number of players
         for (int i = 0; i < 4; i++) {
             if (i < numPlayers) {
-                scoreTexts.Add(allScores.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>());
+                scoreTexts.Add(allScores.GetChild(i).GetComponent<TextMeshProUGUI>());
             } else {
                 allPlayers.GetChild(i).gameObject.SetActive(false);
                 allBeats.GetChild(i).gameObject.SetActive(false);
@@ -60,37 +80,95 @@ public class RythmLogic : GameLogic
         gameTimer -= TimeSpan.FromSeconds(Time.deltaTime);
 
         if (gameTimer <= TimeSpan.Zero) {
-            playing = false;
-            GameStatus.instance.finishMiniGame(playerScores);
+            StartCoroutine(finishMiniGame());
+            return;
         } else {
-            timerText.text = "Time\n" + gameTimer.ToString("mm':'ss");
+            timerText.text = "TIME\n" + gameTimer.ToString("mm':'ss");
         }
     }
 
     public override void playerAction(GameObject player){
-        int score = 5;
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("RedNote");
+            checkBallHit(player, "red");
+            StartCoroutine(returnToNormalState(animator));
+        }
+            
+    }
 
-        NoteObject ball = player.GetComponent<ButtonController>().hitBall();
+    public override void playerBlue(GameObject player){
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("BlueNote");
+            checkBallHit(player, "blue");
+            StartCoroutine(returnToNormalState(animator));
+        }
+            
+    }
+
+    public override void playerOrange(GameObject player){
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("OrangeNote");
+            checkBallHit(player, "orange");
+            StartCoroutine(returnToNormalState(animator));
+        }
+    }
+
+    public override void playerGreen(GameObject player){
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("GreenNote");
+            checkBallHit(player, "green");
+            StartCoroutine(returnToNormalState(animator));
+        }
+    }
+
+    public override void playerYellow(GameObject player){
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("YellowNote");
+            checkBallHit(player, "yellow");
+            StartCoroutine(returnToNormalState(animator));
+        }
+    }
+
+    private void checkBallHit(GameObject player, string button)
+    {
+
+        NoteObject ball = player.GetComponent<ButtonController>().ball;
 
         if (ball == null) {
             updatePlayerScore(player, -10);
             return;
         }
 
+        if (ball.color != button) {
+            return;
+        }
+
+        playerHit(player, ball);
+    }
+
+    private void playerHit(GameObject player, NoteObject ball)
+    {
         float height = ball.getHeight();
         Destroy(ball.gameObject);
 
+        int score;
+
         if (Math.Abs(height) > 0.25f){
             print("Hit!");
-            score += 5;
+            score = 5;
         } 
         else if(Math.Abs(height) > 0.05f){
             print("Great!");
-            score += 25;
+            score = 25;
         } 
         else{
             print("Perfect!");
-            score += 45;
+            score = 45;
         } 
 
         updatePlayerScore(player, score);
@@ -101,5 +179,20 @@ public class RythmLogic : GameLogic
         int index = player.GetComponent<InputController>().playerNumber - 1;
         playerScores[index] += score;
         scoreTexts[index].text = playerScores[index].ToString();
+    }
+
+    IEnumerator finishMiniGame()
+    {
+        playing = false;
+        timerText.text = "FINISHED";
+
+        yield return new WaitForSeconds(3.0f);
+
+        GameStatus.instance.finishMiniGame(playerScores);
+    }
+
+    IEnumerator returnToNormalState(Animator player){
+        yield return new WaitForSeconds(0.4f);
+        player.Play("Default");
     }
 }
