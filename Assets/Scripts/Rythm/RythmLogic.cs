@@ -7,8 +7,9 @@ using TMPro;
 
 public class RythmLogic : GameLogic
 {
-    private bool playing = false;
+    public bool playing = false;
 
+    [SerializeField] private TextMeshProUGUI countDown;
     public TextMeshProUGUI timerText;
     private TimeSpan gameTimer;
 
@@ -25,8 +26,27 @@ public class RythmLogic : GameLogic
 
         numPlayers = GameStatus.instance.playerCount;
         InitializePlayers();
+        StartCoroutine(StartCountdown());
+    }
 
-        gameTimer = TimeSpan.FromSeconds(20);
+    IEnumerator StartCountdown()
+    {
+        WaitForSeconds waitHalfSecond = new WaitForSeconds(0.5f);
+        WaitForSeconds waitOneSecond = new WaitForSeconds(1);
+
+        yield return waitOneSecond;
+        yield return waitOneSecond;
+
+        for (int i = 3; i > 0; i--) {
+            countDown.text = i.ToString();
+            yield return waitOneSecond;
+        }
+
+        countDown.text = "START";
+        yield return waitHalfSecond;
+        countDown.text = "";
+
+        gameTimer = TimeSpan.FromSeconds(60);
         playing = true;
     }
 
@@ -60,35 +80,63 @@ public class RythmLogic : GameLogic
         gameTimer -= TimeSpan.FromSeconds(Time.deltaTime);
 
         if (gameTimer <= TimeSpan.Zero) {
-            playing = false;
-            GameStatus.instance.finishMiniGame(playerScores);
+            StartCoroutine(finishMiniGame());
+            return;
         } else {
             timerText.text = "TIME\n" + gameTimer.ToString("mm':'ss");
         }
     }
 
     public override void playerAction(GameObject player){
-        checkBallHit(player, "red");
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("RedNote");
+            checkBallHit(player, "red");
+            StartCoroutine(returnToNormalState(animator));
+        }
+            
     }
 
     public override void playerBlue(GameObject player){
-        checkBallHit(player, "blue");
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("BlueNote");
+            checkBallHit(player, "blue");
+            StartCoroutine(returnToNormalState(animator));
+        }
+            
     }
 
     public override void playerOrange(GameObject player){
-        checkBallHit(player, "orange");
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("OrangeNote");
+            checkBallHit(player, "orange");
+            StartCoroutine(returnToNormalState(animator));
+        }
     }
 
     public override void playerGreen(GameObject player){
-        checkBallHit(player, "green");
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("GreenNote");
+            checkBallHit(player, "green");
+            StartCoroutine(returnToNormalState(animator));
+        }
     }
 
     public override void playerYellow(GameObject player){
-        checkBallHit(player, "yellow");
+        if(playing){
+            Animator animator = player.GetComponent<Animator>();
+            animator.Play("YellowNote");
+            checkBallHit(player, "yellow");
+            StartCoroutine(returnToNormalState(animator));
+        }
     }
 
     private void checkBallHit(GameObject player, string button)
     {
+
         NoteObject ball = player.GetComponent<ButtonController>().ball;
 
         if (ball == null) {
@@ -131,5 +179,20 @@ public class RythmLogic : GameLogic
         int index = player.GetComponent<InputController>().playerNumber - 1;
         playerScores[index] += score;
         scoreTexts[index].text = playerScores[index].ToString();
+    }
+
+    IEnumerator finishMiniGame()
+    {
+        playing = false;
+        timerText.text = "FINISHED";
+
+        yield return new WaitForSeconds(3.0f);
+
+        GameStatus.instance.finishMiniGame(playerScores);
+    }
+
+    IEnumerator returnToNormalState(Animator player){
+        yield return new WaitForSeconds(0.4f);
+        player.Play("Default");
     }
 }
