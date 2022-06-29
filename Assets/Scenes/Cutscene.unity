@@ -480,6 +480,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 52685ed25fdcb1b488b7047664232501, type: 3}
   m_PrefabInstance: {fileID: 564443249}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &62943908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62943909}
+  - component: {fileID: 62943910}
+  m_Layer: 0
+  m_Name: YellowMoosic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &62943909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62943908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &62943910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62943908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1920910607
+      Data2: 1323856546
+      Data3: -1787781753
+      Data4: 1225002838
+    Path: event:/Car/Car-acceleration-004
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &64911280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8f9746425331e894b8e84f6845555f2f, type: 3}
@@ -876,6 +938,68 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &183053647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183053648}
+  - component: {fileID: 183053649}
+  m_Layer: 0
+  m_Name: OrangeMoosic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &183053648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183053647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &183053649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183053647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1110601606
+      Data2: 1111107213
+      Data3: 1307922075
+      Data4: 1459927279
+    Path: event:/Car/Car-acceleration-002
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &192542503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1097,6 +1221,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -1620962351854634169, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -8368188079629018379, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
+    value: {fileID: 62943908}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &228172428
@@ -1227,6 +1353,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0880d9ac631f24f409114af2781b3480, type: 3}
   m_PrefabInstance: {fileID: 1039565671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &260932340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 260932341}
+  - component: {fileID: 260932342}
+  m_Layer: 0
+  m_Name: CrashMoosic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &260932341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260932340}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &260932342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260932340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2086955638
+      Data2: 1134563197
+      Data3: -1511826032
+      Data4: -1633191875
+    Path: event:/Car/Car-crash-002
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &266535892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1391,6 +1579,68 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &275635068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275635069}
+  - component: {fileID: 275635070}
+  m_Layer: 0
+  m_Name: BlueMoosic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &275635069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275635068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &275635070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275635068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 625884977
+      Data2: 1318076480
+      Data3: 1999197073
+      Data4: 14147567
+    Path: event:/Car/Car-acceleration-001
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &282718195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1512,6 +1762,10 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 2162610419191336824, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
     value: {fileID: 1599781135}
+  - key: {fileID: 8162287908332944821, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7147516884211462749, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
+    value: {fileID: 260932340}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &285303575
@@ -1665,6 +1919,8 @@ PlayableDirector:
     value: {fileID: 1314877336}
   - key: {fileID: -9016327913682181751, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 4827703265798666622, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
+    value: {fileID: 660266617}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &333387308
@@ -2343,6 +2599,10 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -9016327913682181751, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
     value: {fileID: 1851500492}
+  - key: {fileID: 4827703265798666622, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -5300040748219796272, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
+    value: {fileID: 1246737732}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &464360011
@@ -3114,6 +3374,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4476237092564900, guid: e4f692da1b272f04eac6261a030dfec6, type: 3}
   m_PrefabInstance: {fileID: 1545825775}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &660266617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660266618}
+  - component: {fileID: 660266619}
+  m_Layer: 0
+  m_Name: GreenMoosic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &660266618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660266617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &660266619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660266617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -351713322
+      Data2: 1340895154
+      Data3: 898708639
+      Data4: -796086750
+    Path: event:/Car/Car-acceleration-003
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &699111999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 52685ed25fdcb1b488b7047664232501, type: 3}
@@ -3283,6 +3605,10 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -8554969552130137981, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
     value: {fileID: 201851401}
+  - key: {fileID: -6269299741548649485, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -2586785767948122715, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
+    value: {fileID: 1118149808}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &742842493 stripped
@@ -3315,6 +3641,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ea4fd21ca22b3142ae00f70771bb8a0, type: 3}
   m_PrefabInstance: {fileID: 1711898664}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &748077335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748077336}
+  - component: {fileID: 748077337}
+  m_Layer: 0
+  m_Name: Moosic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &748077336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748077335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.660402, y: 0.67394155, z: -0.02079153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 275635069}
+  - {fileID: 183053648}
+  - {fileID: 660266618}
+  - {fileID: 62943909}
+  - {fileID: 260932341}
+  - {fileID: 1118149809}
+  - {fileID: 1246737733}
+  - {fileID: 1396499926}
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &748077337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748077335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 761616662
+      Data2: 1103417759
+      Data3: 597431475
+      Data4: -1337169317
+    Path: event:/Songs/Game-songs-004
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &753208321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3816,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -8554969552130137981, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -6269299741548649485, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
+    value: {fileID: 183053647}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &780250629 stripped
@@ -3843,6 +4241,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -1620962351854634169, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
     value: {fileID: 1922183518}
+  - key: {fileID: -8368188079629018379, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
+    value: {fileID: 62943908}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &968532866
@@ -4113,6 +4513,10 @@ PlayableDirector:
     value: {fileID: 1545825777}
   - key: {fileID: -1620962351854634169, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -8368188079629018379, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8327336023326546829, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
+    value: {fileID: 1396499925}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1024671650 stripped
@@ -4277,6 +4681,68 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1118149808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1118149809}
+  - component: {fileID: 1118149810}
+  m_Layer: 0
+  m_Name: CrashMoosic (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1118149809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118149808}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1118149810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118149808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 882570677
+      Data2: 1149170770
+      Data3: 1764210318
+      Data4: 1820755842
+    Path: event:/Car/Car-crash-003
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1137619944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4446,6 +4912,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5099033651495012595, guid: 55fa3330e109d974d93a4bf6ebfed017, type: 3}
   m_PrefabInstance: {fileID: 333387308}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1246737732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1246737733}
+  - component: {fileID: 1246737734}
+  m_Layer: 0
+  m_Name: CrashMoosic (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1246737733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246737732}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1246737734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246737732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 882570677
+      Data2: 1149170770
+      Data3: 1764210318
+      Data4: 1820755842
+    Path: event:/Car/Car-crash-003
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1282586451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4868,6 +5396,10 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -9016327913682181751, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 4827703265798666622, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
+    value: {fileID: 660266617}
+  - key: {fileID: -5300040748219796272, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1325749981
@@ -4930,6 +5462,10 @@ PlayableDirector:
   - key: {fileID: -2078315549087512262, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
     value: {fileID: 0}
   - key: {fileID: 2162610419191336824, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8162287908332944821, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
+    value: {fileID: 275635068}
+  - key: {fileID: 7147516884211462749, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -5197,8 +5733,72 @@ PlayableDirector:
     value: {fileID: 742842494}
   - key: {fileID: 2162610419191336824, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 8162287908332944821, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
+    value: {fileID: 275635068}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &1396499925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1396499926}
+  - component: {fileID: 1396499927}
+  m_Layer: 0
+  m_Name: CrashMoosic (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1396499926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396499925}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 748077336}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1396499927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396499925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2031884046
+      Data2: 1295616668
+      Data3: -944717383
+      Data4: -1272176310
+    Path: event:/Car/Car-crash-001
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1402116117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,6 +6042,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 2162610419191336824, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 8162287908332944821, guid: 45e8da46e608e264ea48b33b5aed9bbc, type: 2}
+    value: {fileID: 275635068}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1462868525
@@ -5608,6 +6210,10 @@ PlayableDirector:
   - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: -8554969552130137981, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6269299741548649485, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
+    value: {fileID: 183053647}
+  - key: {fileID: -2586785767948122715, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -6811,6 +7417,8 @@ PlayableDirector:
     value: {fileID: 1505510584}
   - key: {fileID: -8554969552130137981, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -6269299741548649485, guid: 9c57f7cff4a874f43b956e61de70af59, type: 2}
+    value: {fileID: 183053647}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &1775593439
@@ -8127,6 +8735,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -9016327913682181751, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 4827703265798666622, guid: 6f3b9219b15cbdb46a87caa23f3dfea2, type: 2}
+    value: {fileID: 660266617}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &2103830255 stripped
@@ -8214,6 +8824,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -1620962351854634169, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
     value: {fileID: 1922183518}
+  - key: {fileID: -8368188079629018379, guid: d9e15bdc20652bc4c8aabe6e54d6e698, type: 2}
+    value: {fileID: 62943908}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &2123589926
