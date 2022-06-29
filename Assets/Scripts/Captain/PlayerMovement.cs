@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public Transform playerInFront;
+    public int playerInBackIndex;
     
     public bool inFront = false;
 
