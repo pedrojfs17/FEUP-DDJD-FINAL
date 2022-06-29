@@ -8,7 +8,8 @@ public class PlayerPlatform : MonoBehaviour
     public Rigidbody rb;
     public float forwardForce = 2000f;
     public float sidewaysForce = 20;
-    public float health = 50f;
+    public int points = 0;
+    public bool cangetmore = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,31 @@ public class PlayerPlatform : MonoBehaviour
         
     }
 
+    public void MoreHealth(){
+        if (cangetmore == true){
+            points += 10;
+            UnityEngine.Debug.Log("kaka");
+        }
+    }
+
+    public int getHealth(){
+        return points;
+    }
+
+    public bool getCanGetMore(){
+        return cangetmore;
+    }
+
     // Update is called once per frame
     void Update()
     {
-
+        Transform transform = GetComponent<Transform>();
+        if(transform.position.y < 0){
+            cangetmore = false;
+        }
+        else{
+            cangetmore = true;
+        }
         /*if(Input.GetKey("d")){
             rb.AddForce(0,0,sidewaysForce * 100 * Time.deltaTime);
         }

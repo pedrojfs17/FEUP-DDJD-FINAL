@@ -1,19 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
+using System.Diagnostics;
+using System.Threading;
 
 public class DodjeLogic : GameLogic
 {
     private bool playing = false;
+    private int[] scores = new int[4];
+    public Stopwatch watch = new Stopwatch();
 
     void Start()
     {
         playing = true;
+
+        if (!GameStatus.instance.playing) {
+            GameStatus.instance.startMiniGame(4, SceneManager.GetActiveScene().name, false);
+        }
+
+        watch = Stopwatch.StartNew();
+
     }
 
     void Update()
     {
         if (!playing) return;
+        if(watch.ElapsedMilliseconds > 30000){
+            watch.Stop(); 
+            End();
+        }
+        
+    }
+
+    void End(){
+        if (GameObject.Find("Player1").GetComponent<PlayerController>().getHealth() < 250){
+            List<int> finalScore = new List<int>();
+            finalScore.Add(100);
+            finalScore.Add(0);
+            finalScore.Add(0);
+            finalScore.Add(0);
+
+            UnityEngine.Debug.Log("Won");
+
+            //GameStatus.instance.finishMiniGame(finalScore);
+        }
+        else{
+            List<int> finalScore = new List<int>();
+            finalScore.Add(0);
+            finalScore.Add(100);
+            finalScore.Add(100);
+            finalScore.Add(100);
+
+            UnityEngine.Debug.Log("Lost");
+
+            //GameStatus.instance.finishMiniGame(finalScore);
+        }
     }
 
     public int GetPlayer(GameObject player){

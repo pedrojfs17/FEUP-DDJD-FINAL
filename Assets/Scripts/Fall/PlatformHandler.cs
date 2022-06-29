@@ -51,5 +51,7 @@ public class PlatformHandler : MonoBehaviour
         }
 
         time = true;
+
+        GameObject.Find("GameLogic").GetComponent<FallLogic>().IncreaseHealth();
     }
 }

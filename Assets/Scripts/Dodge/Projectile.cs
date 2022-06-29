@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public float speed = 30;
     public float lifeTime = 1;
     public float distance = 0.5f;
-    public float damage = 10f;
+    public float damage = 10;
 
     // Start is called before the first frame update
     void Start()

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public float forwardForce = 2000f;
     public float sidewaysForce = 20;
-    public float health = 100f;
+    public float health = 10;
     public float dir = 1;
     public string right;
     public string left;
@@ -40,12 +40,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public float getHealth(){
+        return health;
+    }
+
     public void TakeDamage(float amount){
-        health -= amount;
+        health += amount;
         Debug.Log(health);
-        if(health <= 0f){
-            Destroy(gameObject);
-        }
     }
 
 }
