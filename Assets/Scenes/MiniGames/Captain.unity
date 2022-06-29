@@ -556,6 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInFront: {fileID: 1424823441}
+  playerInBackIndex: 0
   inFront: 0
 --- !u!114 &112361244
 MonoBehaviour:
@@ -592,6 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInFront: {fileID: 112361241}
+  playerInBackIndex: 0
   inFront: 0
 --- !u!114 &269885198
 MonoBehaviour:
@@ -2458,7 +2460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInFront: {fileID: 1510137489}
-  inFront: 1
+  playerInBackIndex: 0
+  inFront: 0
 --- !u!114 &1424823443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,6 +2570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInFront: {fileID: 269885196}
+  playerInBackIndex: 0
   inFront: 0
 --- !u!114 &1510137492
 MonoBehaviour:
