@@ -13,6 +13,7 @@ public class RowingLogic : GameLogic
     public int[] correspondence = {0, 1, 2, 3};
     
     public GameObject obstacle, bluePigeon, orangePigeon, greenPigeon, yellowPigeon;
+    private List<GameObject> pigeonPrefabs = new List<GameObject>();
     Transform leftBoat, rightBoat;
     
     [SerializeField] private TextMeshProUGUI leftCountDown, rightCountDown;
@@ -26,6 +27,11 @@ public class RowingLogic : GameLogic
         
         leftBoat = transform.Find("LeftBoat");
         rightBoat = transform.Find("RightBoat");
+        
+        pigeonPrefabs.Add(bluePigeon);
+        pigeonPrefabs.Add(orangePigeon);
+        pigeonPrefabs.Add(greenPigeon);
+        pigeonPrefabs.Add(yellowPigeon);
         
         placeObstacles();
         setupMovement();
@@ -50,7 +56,6 @@ public class RowingLogic : GameLogic
 
         leftCountDown.text = "START";
         rightCountDown.text = "START";
-        // music.Play();
 
         yield return waitHalfSecond;
         leftCountDown.text = "";
@@ -110,69 +115,21 @@ public class RowingLogic : GameLogic
             correspondence[r] = tmp;
         }
         
-        GameObject pigeonBlue;
-        GameObject pigeonOrange;
-        GameObject pigeonGreen;
-        GameObject pigeonYellow;
-        
-        switch (correspondence[0]) {
-            case 0:
-                pigeonBlue = Instantiate(bluePigeon, leftBoat.Find("PlayerLeft").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 1:
-                pigeonBlue = Instantiate(bluePigeon, leftBoat.Find("PlayerRight").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 2:
-                pigeonBlue = Instantiate(bluePigeon, rightBoat.Find("PlayerLeft").transform.position, Quaternion.identity, rightBoat);
-                break;
-            case 3:
-                pigeonBlue = Instantiate(bluePigeon, rightBoat.Find("PlayerRight").transform.position, Quaternion.identity, rightBoat);
-                break;
-        }
-        
-        switch (correspondence[1]) {
-            case 0:
-                pigeonOrange = Instantiate(orangePigeon, leftBoat.Find("PlayerLeft").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 1:
-                pigeonOrange = Instantiate(orangePigeon, leftBoat.Find("PlayerRight").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 2:
-                pigeonOrange = Instantiate(orangePigeon, rightBoat.Find("PlayerLeft").transform.position, Quaternion.identity, rightBoat);
-                break;
-            case 3:
-                pigeonOrange = Instantiate(orangePigeon, rightBoat.Find("PlayerRight").transform.position, Quaternion.identity, rightBoat);
-                break;
-        }
-        
-        switch (correspondence[2]) {
-            case 0:
-                pigeonGreen = Instantiate(greenPigeon, leftBoat.Find("PlayerLeft").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 1:
-                pigeonGreen = Instantiate(greenPigeon, leftBoat.Find("PlayerRight").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 2:
-                pigeonGreen = Instantiate(greenPigeon, rightBoat.Find("PlayerLeft").transform.position, Quaternion.identity, rightBoat);
-                break;
-            case 3:
-                pigeonGreen = Instantiate(greenPigeon, rightBoat.Find("PlayerRight").transform.position, Quaternion.identity, rightBoat);
-                break;
-        }
-        
-        switch (correspondence[3]) {
-            case 0:
-                pigeonYellow = Instantiate(yellowPigeon, leftBoat.Find("PlayerLeft").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 1:
-                pigeonYellow = Instantiate(yellowPigeon, leftBoat.Find("PlayerRight").transform.position, Quaternion.identity, leftBoat);
-                break;
-            case 2:
-                pigeonYellow = Instantiate(yellowPigeon, rightBoat.Find("PlayerLeft").transform.position, Quaternion.identity, rightBoat);
-                break;
-            case 3:
-                pigeonYellow = Instantiate(yellowPigeon, rightBoat.Find("PlayerRight").transform.position, Quaternion.identity, rightBoat);
-                break;
+        for (int i = 0; i < 4; i++) {
+            switch (correspondence[i]) {
+                case 0:
+                    Instantiate(pigeonPrefabs[i], leftBoat.Find("PlayerLeft").transform.position, Quaternion.identity, leftBoat);
+                    break;
+                case 1:
+                    Instantiate(pigeonPrefabs[i], leftBoat.Find("PlayerRight").transform.position, Quaternion.identity, leftBoat);
+                    break;
+                case 2:
+                    Instantiate(pigeonPrefabs[i], rightBoat.Find("PlayerLeft").transform.position, Quaternion.identity, rightBoat);
+                    break;
+                case 3:
+                    Instantiate(pigeonPrefabs[i], rightBoat.Find("PlayerRight").transform.position, Quaternion.identity, rightBoat);
+                    break;
+            }
         }
     }
     
