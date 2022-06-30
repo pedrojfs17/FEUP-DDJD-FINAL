@@ -4,12 +4,18 @@ using UnityEngine;
 public class MoveToTarget : MonoBehaviour
 {
     private Transform target;
+    public Animator animator;
 
     private float moveSpeed = 3.0f;
     private float rotationSpeed = 3.0f;
 
     private bool moving = false;
     private bool rotating = false;
+
+    private void Start() 
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void SetTarget(Transform targetTransform, bool startByRotating)
     {
@@ -18,6 +24,8 @@ public class MoveToTarget : MonoBehaviour
 
         moving = true;
         rotating = true;
+
+        animator.SetBool("Running", true);
     }
 
     private void EndMovement()
@@ -25,6 +33,7 @@ public class MoveToTarget : MonoBehaviour
         moving = false;
         transform.position = target.position;
         rotationSpeed = 120.0f;
+        animator.SetBool("Running", false);
     }
 
     private void EndRotation()

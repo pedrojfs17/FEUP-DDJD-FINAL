@@ -58,7 +58,9 @@ public class GameStatus : MonoBehaviour
 
         scenesToPlay = new Queue<string>();
 
-        while (nMiniGames > 0 && availableGames.Count > 0) {
+        while (nMiniGames > 0) {
+            if (availableGames.Count == 0) availableGames = new List<string>(miniGames);
+
             int randomNumber = UnityEngine.Random.Range(0, availableGames.Count);
 
             scenesToPlay.Enqueue("Instructions");

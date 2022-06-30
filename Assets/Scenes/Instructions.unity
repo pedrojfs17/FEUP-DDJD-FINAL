@@ -1352,7 +1352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 833128784}
   m_Layer: 5
-  m_Name: Rythm
+  m_Name: Rhythm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2731,7 +2731,7 @@ GameObject:
   - component: {fileID: 1842454916}
   - component: {fileID: 1842454915}
   m_Layer: 5
-  m_Name: Rythm
+  m_Name: Rhythm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2777,7 +2777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RYTHM
+  m_text: RHYTHM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe60b8f747c9e5a4f929c9785b3d2455, type: 2}
   m_sharedMaterial: {fileID: -4829194911423026350, guid: fe60b8f747c9e5a4f929c9785b3d2455, type: 2}

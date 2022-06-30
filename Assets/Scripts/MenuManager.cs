@@ -7,6 +7,20 @@ public class MenuManager : MonoBehaviour
     private int _numPlayers = 4;
     private int _numMiniGames = 4;
 
+    [SerializeField] List<Animator> menuPigeons;
+
+    private void Start() 
+    {
+        StartFlyingAnimations();
+    }
+
+    public void StartFlyingAnimations()
+    {
+        foreach (Animator pigeon in menuPigeons) {
+            pigeon.SetBool("Flying", true);
+        }
+    }
+
     public void quitGame()
     {
         Application.Quit();

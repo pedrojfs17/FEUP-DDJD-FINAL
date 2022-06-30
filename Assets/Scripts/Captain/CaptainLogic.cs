@@ -15,7 +15,9 @@ public class CaptainLogic : GameLogic
     [SerializeField] private FMODUnity.StudioEventEmitter gunShot;
     [SerializeField] private ParticleSystem hitFx;
 
-    private List<GameObject> players;
+    [SerializeField] private List<Transform> initialPositions;
+
+    private List<Animator> players;
     private int currentPlayer;
     private int numPlayers;
 
@@ -82,19 +84,23 @@ public class CaptainLogic : GameLogic
         Transform allPlayers = GameObject.Find("Players").transform;
         RectTransform allScores = GameObject.Find("Scores").GetComponent<RectTransform>();
 
-        players = new List<GameObject>();
+        players = new List<Animator>();
         playerScores = new List<TextMeshProUGUI>();
         scores = new List<int>(new int[numPlayers]);
 
         // Set active only the correct number of players
         for (int i = 0; i < 4; i++) {
             if (i < numPlayers) {
-                players.Add(allPlayers.GetChild(i).gameObject);
+                players.Add(allPlayers.GetChild(i).GetComponent<Animator>());
                 playerScores.Add(allScores.GetChild(i).GetComponent<TextMeshProUGUI>());
             } else {
                 allPlayers.GetChild(i).gameObject.SetActive(false);
                 allScores.GetChild(i).gameObject.SetActive(false);
             }
+        }
+
+        foreach (Animator player in players) {
+            player.SetBool("Flying", true);
         }
 
         int[] correspondence = {0, 1, 2, 3};
@@ -110,17 +116,22 @@ public class CaptainLogic : GameLogic
         currentPlayer = correspondence[0];
 
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = true;
-        
 
+        players[correspondence[0]].transform.position = initialPositions[0].position;
         players[correspondence[0]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[3]].transform;
         players[correspondence[0]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[1];
+        
+        players[correspondence[1]].transform.position = initialPositions[1].position;
+        players[correspondence[1]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[0]].transform;
+        players[correspondence[1]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[2];
+        
+        players[correspondence[2]].transform.position = initialPositions[2].position;
+        players[correspondence[2]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[1]].transform;
+        players[correspondence[2]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[3];
+        
+        players[correspondence[3]].transform.position = initialPositions[3].position;
         players[correspondence[3]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[2]].transform;
         players[correspondence[3]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[0];
-
-        for (int i = 1; i < numPlayers-1; i++) {
-            players[correspondence[i]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[i-1]].transform;
-            players[correspondence[i]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[i+1];
-        }
     }
 
     void UpdateCamera()
@@ -202,6 +213,8 @@ public class CaptainLogic : GameLogic
         hitFx.Play();
         hitFx.GetComponent<FMODUnity.StudioEventEmitter>().Play();
 
+        players[currentPlayer].SetTrigger("Hurt");
+
         UpdatePlayer();
         UpdateCamera();
 
@@ -212,7 +225,7 @@ public class CaptainLogic : GameLogic
     
     public override void playerAction(GameObject player)
     {
-        if (playing && !moving && players[currentPlayer] == player) {
+        if (playing && !moving && players[currentPlayer].gameObject == player) {
             scores[currentPlayer] += (int) currentScore;
             playerScores[currentPlayer].text = (scores[currentPlayer]).ToString();
             UpdatePlayer();
@@ -224,7 +237,6 @@ public class CaptainLogic : GameLogic
     {
         playing = false;
         timerText.text = "FINISHED";
-        music.Stop();
 
         yield return new WaitForSeconds(1.5f);
 

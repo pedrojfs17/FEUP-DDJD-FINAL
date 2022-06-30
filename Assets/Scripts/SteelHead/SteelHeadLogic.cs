@@ -28,6 +28,8 @@ public class SteelHeadLogic : GameLogic
     [SerializeField] private Transform rightPosition;
 
     [SerializeField] private TextMeshProUGUI countDown;
+    
+    private FMODUnity.StudioEventEmitter roundStartSound;
 
     private void Start()
     {
@@ -36,6 +38,8 @@ public class SteelHeadLogic : GameLogic
         }
 
         numPlayers = GameStatus.instance.playerCount;
+
+        roundStartSound = GetComponent<FMODUnity.StudioEventEmitter>();
 
         InitializePlayers();
         PrepareRounds();
@@ -118,6 +122,9 @@ public class SteelHeadLogic : GameLogic
         scores[roundWinner] += currentRoundPoints;
         playerScoreTexts[roundWinner].text += "W";
         playerScoreTexts[roundLoser].text += "L";
+
+        players[roundWinner].animator.SetBool("Sneak", false);
+        players[roundLoser].animator.SetBool("Sneak", false);
         
         PutPlayerInPosition(roundWinner, defaultPositions[roundWinner], defaultParent, true);
         PutPlayerInPosition(roundLoser, defaultPositions[roundLoser], defaultParent, true);
@@ -178,7 +185,13 @@ public class SteelHeadLogic : GameLogic
             yield return waitOneSecond;
         }
 
+        Tuple<int, int> roundPlayers = rounds.Peek();
+        players[roundPlayers.Item1].animator.SetBool("Sneak", true);
+        players[roundPlayers.Item2].animator.SetBool("Sneak", true);
+
         countDown.text = "START";
+
+        roundStartSound.Play();
 
         yield return waitHalfSecond;
         countDown.text = "";
