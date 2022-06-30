@@ -21,7 +21,7 @@ public class NoteGeneration : MonoBehaviour
 
         time += Time.deltaTime;
 
-        if (time < 1.0f) return;
+        if (time < 1.5f) return;
         
         int noteIndex = Random.Range(0, notes.Count);
 
