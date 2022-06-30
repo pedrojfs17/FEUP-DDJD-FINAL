@@ -97,14 +97,29 @@ public class CaptainLogic : GameLogic
             }
         }
 
-        currentPlayer = 0;
+        int[] correspondence = {0, 1, 2, 3};
+        
+        for (int t = 0; t < correspondence.Length; t++ )
+        {
+            int tmp = correspondence[t];
+            int r = UnityEngine.Random.Range(t, correspondence.Length);
+            correspondence[t] = correspondence[r];
+            correspondence[r] = tmp;
+        }
+        
+        currentPlayer = correspondence[0];
 
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = true;
+        
 
-        players[0].GetComponent<PlayerMovement>().playerInFront = players[numPlayers - 1].transform;
+        players[correspondence[0]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[3]].transform;
+        players[correspondence[0]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[1];
+        players[correspondence[3]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[2]].transform;
+        players[correspondence[3]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[0];
 
-        for (int i = 1; i < numPlayers; i++) {
-            players[i].GetComponent<PlayerMovement>().playerInFront = players[i - 1].transform;
+        for (int i = 1; i < numPlayers-1; i++) {
+            players[correspondence[i]].GetComponent<PlayerMovement>().playerInFront = players[correspondence[i-1]].transform;
+            players[correspondence[i]].GetComponent<PlayerMovement>().playerInBackIndex = correspondence[i+1];
         }
     }
 
@@ -119,7 +134,7 @@ public class CaptainLogic : GameLogic
 
         moving = true;
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = false;
-        currentPlayer = (currentPlayer + 1) % numPlayers;
+        currentPlayer = players[currentPlayer].GetComponent<PlayerMovement>().playerInBackIndex;
         players[currentPlayer].GetComponent<PlayerMovement>().inFront = true;
 
         StartCoroutine(endMovement());
