@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/Rowing.unity
     guid: 285a3c54e2568f54abe4e58675dbbcff
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/SteelHead.unity
+    guid: 62d6da5ca12f9df4f8ad3a594683b952
   m_configObjects: {}
