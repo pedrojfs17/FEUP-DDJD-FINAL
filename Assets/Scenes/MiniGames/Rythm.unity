@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: a581b9330cf96e744984bb4ec6953bf5, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 77b85a6836d18ab468bc8f30fd5343e0, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 151041f5908472949b04946a47563316, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -7172,7 +7172,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 9285230f1434a4948acee59ae9d227f6, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 7762b35b9ae3d394ebed82442105d50b, type: 2}
 --- !u!4 &1863720481
 Transform:
   m_ObjectHideFlags: 0
