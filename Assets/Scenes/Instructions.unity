@@ -552,10 +552,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Press the  <color=#FF0003>ACTION</color>, <color=#00B1FF>BLUE</color>,
     <color=#FF7700>ORANGE</color>, <color=#00CA2C>GREEN</color> and <color=#FFFF00>YELLOW</color>
-    buttons according to the color of the falling balls.
+    buttons according to the color of the falling pigeon poses.
 
-    The more centered the
-    ball is at the moment of the click, the more points you get!'
+    The more centered
+    the pigeon pose is at the moment of the click, the more points you get!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe60b8f747c9e5a4f929c9785b3d2455, type: 2}
   m_sharedMaterial: {fileID: -4829194911423026350, guid: fe60b8f747c9e5a4f929c9785b3d2455, type: 2}
